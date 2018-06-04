@@ -99,3 +99,16 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# custom
+.DS_Store
+.sass-cache
+*.*~
+*.user
+.idea/
+*.log
+*.orig
+tests/
+cmake-build-debug/
+build/
+cmake-build-release/
