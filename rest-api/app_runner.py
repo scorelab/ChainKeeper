@@ -27,6 +27,14 @@ def get_tx_inputs(tx_hash):
 def get_tx_inputs_index(tx_index):
     return getTxInputsIndex(tx_index)
 
+@app.route('/blocksci/api/v5/tx_outputs/<string:tx_hash>', methods=['GET'])
+def get_tx_outputs(tx_hash):
+    return getTxOutputs(tx_hash)
+
+@app.route('/blocksci/api/v5/tx_outputs/<int:tx_index>', methods=['GET'])
+def get_tx_outputs_index(tx_index):
+    return getTxOutputsIndex(tx_index)
+
 
 if __name__ == '__main__':
    app.run(debug = True)
