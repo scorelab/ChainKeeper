@@ -11,6 +11,10 @@ app = Flask(__name__)
 def get_block(block_height):
     return getBlockData(block_height)
 
+@app.route('/blocksci/api/v5/block/range/<int:block_height1>/<int:block_height2>', methods=['GET'])
+def get_block_range(block_height1,block_height2):
+    return getBlockRangeData(block_height1,block_height2)
+
 @app.route('/blocksci/api/v5/tx_with_hash/<string:tx_hash>', methods=['GET'])
 def get_tx_hash(tx_hash):
     return getTxDataWithHash(tx_hash)
