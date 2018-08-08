@@ -4,6 +4,7 @@ import './App.css';
 
 import * as routes from '../constants/routes';
 import Setup from './Setup';
+import MainPage from './Home';
 
 const App = () =>
   <Router>
@@ -11,6 +12,11 @@ const App = () =>
       <Route
         exact path={routes.LANDING}
         component={() => <Setup />}
+      />
+
+      <Route
+        exact path={routes.HOME}
+        component={() => <MainPage />}
       />
     </div>
   </Router>
