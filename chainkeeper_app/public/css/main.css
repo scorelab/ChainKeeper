@@ -43,8 +43,7 @@ body, html {
 }
 
 .container-login100 {
-  width: 100%;  
-  min-height: 100vh;
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -196,8 +195,7 @@ iframe {
 }
 
 .container-login100 {
-  width: 100%;  
-  min-height: 100vh;
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -206,22 +204,24 @@ iframe {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 0 15px;
   background: #f2f2f2;  
 }
 
 .wrap-login100 {
+  margin-top: 20px;
   width: 390px;
   background: #fff;
   border-radius: 10px;
-  overflow: hidden;
   padding: 77px 55px 33px 55px;
 
-  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-  -o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-  -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 5px 10px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 3px 5px 10px 3px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 3px 5px 10px 3px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 3px 5px 10px 3px rgba(0, 0, 0, 0.1);
+
+  border:1px solid #e3e3e3;
 }
 
 
