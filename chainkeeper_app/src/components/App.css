@@ -1,0 +1,52 @@
+.App {
+  text-align: center;
+}
+
+.App-logo-main {
+  height: 80px;
+}
+
+.App-header {
+  background-color: #10767A;
+  height: 130px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.item-hover:hover{
+  background-color: #026363;
+
+}
+
+.google_login {
+  transition: filter 1s ease-in-out;
+  -webkit-filter: grayscale(0%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+  filter: grayscale(0%); /* FF 35+ */
+}
+
+.google_login:hover {
+   cursor: pointer;
+  -webkit-filter: grayscale(100%); /* Ch 23+, Saf 6.0+, BB 10.0+ */
+  filter: grayscale(100%); /* FF 35+ */
+}
+
+.signOutBtn:hover{
+  cursor: pointer;
+  background-color: #e4e4e4;
+}
+
+tr > th {
+  text-align: center;
+}
+
+tr > td {
+  text-align: center;
+}
