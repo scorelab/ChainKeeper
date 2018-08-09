@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import AuthUserContext from './AuthUserContext';
 import {auth} from "../firebase";
 
@@ -10,8 +10,10 @@ const Navigation = () =>
     }
   </AuthUserContext.Consumer>
 
+
 const NavigationNonAuth = () =>
-    <nav className="navbar navbar-expand-lg" style={{backgroundColor:"#10767A", borderColor:"none", height:"80px"}}>
+
+    <nav className="navbar navbar-expand-lg" style={{backgroundColor:"#074a84", borderColor:"none", height:"80px"}}>
         <a className="navbar-brand" href="#" style={{color:"#ffffff"}}><b>CHAIN_KEEPER</b></a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,15 +31,22 @@ const NavigationNonAuth = () =>
                     <a className="nav-link" href="/signin" style={{color:"#ffffff"}}>SIGN IN</a>
                 </li>
             </ul>
-             <form className="form-inline my-2 my-lg-1">
-              <input className="form-control mr-sm-2" type="search" style={{marginLeft:"-40px !important", width:"270px"}} placeholder="BLOCK, HASH, TRANSACTION ..." />
-              <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+             <form className="form-inline my-2 my-lg-1" onSubmit={this.handleSubmit}>
+              <input
+                  className="form-control mr-sm-2"
+                  type="search"
+                  style={{marginLeft:"-40px !important", width:"270px"}}
+                  placeholder="BLOCK, HASH, TRANSACTION ..."
+                  name = "enterVal"
+              />
+              <button className="btn btn-outline-success my-2 my-sm-0">Search</button>
             </form>
         </div>
     </nav>;
 
 const NavigationAuth = () =>
-    <nav className="navbar navbar-expand-lg" style={{backgroundColor:"#10767A", borderColor:"none", height:"80px"}}>
+
+    <nav className="navbar navbar-expand-lg" style={{backgroundColor:"#074a84", borderColor:"none", height:"80px"}}>
         <a className="navbar-brand" href="#" style={{color:"#ffffff"}}><b>CHAIN_KEEPER</b></a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,5 +85,14 @@ const NavigationAuth = () =>
         </div>
     </nav>;
 
+class NavigationComp extends Component {
 
-export default Navigation;
+    render() {
+        return (
+            <Navigation/>
+        )
+    }
+}
+
+
+export default NavigationComp;

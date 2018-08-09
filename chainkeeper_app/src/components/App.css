@@ -22,7 +22,7 @@
 }
 
 .item-hover:hover{
-  background-color: #026363;
+  background-color: #081789;
 
 }
 
@@ -43,10 +43,30 @@
   background-color: #e4e4e4;
 }
 
-tr > th {
+#latestBlocks > thead > tr > th {
   text-align: center;
+  font-size: 13px !important;
 }
 
-tr > td {
+#latestBlocks > tbody > tr > td {
   text-align: center;
+  font-size: 13px !important;
+}
+
+#transactionTable > thead > tr > th {
+  text-align: center;
+  font-size: 13px !important;
+}
+
+#transactionTable > tbody > tr > td {
+  text-align: center;
+  font-size: 13px !important;
+}
+
+#hashesTable > tbody > tr > td {
+  font-size: 13px !important;
+}
+
+#blockSummary > tbody > tr > td {
+  font-size: 13px !important;
 }

@@ -4,7 +4,7 @@ import { Link,withRouter, } from 'react-router-dom';
 import * as routes from '../constants/routes';
 import { auth, db } from '../firebase';
 import LoginwithGoogle from './LoginwithGoogle';
-import Navigation from './Navigation';
+import NavigationComp from './Navigation';
 
 const INITIAL_STATE = {
   username:'',
@@ -16,7 +16,7 @@ const INITIAL_STATE = {
 
 const SignUpPage = ({ history }) =>
   <div>
-    <Navigation/>
+    <NavigationComp/>
     <SignUpForm history={history} />
   </div>
 
@@ -136,7 +136,7 @@ class SignUpForm extends Component {
                             <div className="container-login100-form-btn">
                                 <div className="wrap-login100-form-btn">
                                     <div className="login100-form-bgbtn"/>
-                                    <button className="login100-form-btn" style={{backgroundColor:"#00797B"}}  disabled={isInvalid} type="submit">
+                                    <button className="login100-form-btn" style={{backgroundColor:"#074a84"}}  disabled={isInvalid} type="submit">
                                       Sign Up
                                     </button>
                                 </div>
@@ -148,7 +148,7 @@ class SignUpForm extends Component {
                                 </span>
                             </div>
 
-                            <div className="text-center p-t-15">
+                            <div className="text-center p-t-15" style={{marginTop:"20px"}}>
                                 <span className="txt1">
                                     <p>
                                      Have an account?

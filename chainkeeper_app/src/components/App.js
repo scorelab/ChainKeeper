@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router,Route, } from 'react-router-dom';
 import './App.css';
 
@@ -10,6 +10,7 @@ import LoginwithGoogle from "./LoginwithGoogle";
 import PasswordForgetPage from './PasswordForget';
 import SignUpPage from './SignUp';
 import withAuthentication from './withAuthentication';
+import BlockPage from './BlockPage';
 
 const App = () =>
   <Router>
@@ -43,6 +44,12 @@ const App = () =>
         exact path={routes.GOOGLE_LOGIN}
         component={() => <LoginwithGoogle />}
       />
+
+      <Route
+        exact path={routes.EXPLORER_BLOCK}
+        component={() => <BlockPage />}
+      />
+
     </div>
   </Router>
 
