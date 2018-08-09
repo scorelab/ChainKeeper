@@ -25,7 +25,7 @@ const NavigationNonAuth = () =>
                     <a className="nav-link" href="/home" style={{color:"#ffffff"}}>HOME <span className="sr-only">(current)</span></a>
                 </li>
                 <li className="nav-item item-hover" style={{margin: "0 10px 0 10px"}}>
-                    <a className="nav-link" href="/explorer" style={{color:"#ffffff"}}>DATA</a>
+                    <a className="nav-link" href="/explorer" style={{color:"#ffffff"}}>API</a>
                 </li>
                 <li className="nav-item item-hover" style={{margin: "0 20px 0 10px"}}>
                     <a className="nav-link" href="/signin" style={{color:"#ffffff"}}>SIGN IN</a>
@@ -58,7 +58,7 @@ const NavigationAuth = () =>
                     <a className="nav-link" href="/home " style={{color:"#ffffff"}}>HOME <span className="sr-only">(current)</span></a>
                 </li>
                 <li className="nav-item item-hover" style={{margin: "0 10px 0 10px"}}>
-                    <a className="nav-link" href="/explorer" style={{color:"#ffffff"}}>DATA</a>
+                    <a className="nav-link" href="/explorer" style={{color:"#ffffff"}}>API</a>
                 </li>
                 <li className="nav-item item-hover" style={{margin: "0 20px 0 10px"}}>
                     <a className="nav-link" href="/signin" style={{color:"#ffffff"}}>ADD TAGS</a>

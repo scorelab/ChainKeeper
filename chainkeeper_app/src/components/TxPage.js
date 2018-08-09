@@ -76,7 +76,7 @@ class TxData extends Component {
                 </div>
             </div>
         </div>
-        
+
         <div className="row" style={{marginTop:"-10px"}}>
             <div className="col-md-12">
                 <div className="row">
