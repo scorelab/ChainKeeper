@@ -77,4 +77,4 @@ const NavigationAuth = () =>
     </nav>;
 
 
-export default Navigation;  
+export default Navigation;

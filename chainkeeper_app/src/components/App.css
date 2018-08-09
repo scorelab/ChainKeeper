@@ -42,3 +42,11 @@
   cursor: pointer;
   background-color: #e4e4e4;
 }
+
+tr > th {
+  text-align: center;
+}
+
+tr > td {
+  text-align: center;
+}
