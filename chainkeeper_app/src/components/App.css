@@ -20,3 +20,8 @@
 .App-intro {
   font-size: large;
 }
+
+.item-hover:hover{
+  background-color: #026363;
+
+}
