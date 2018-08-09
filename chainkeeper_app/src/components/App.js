@@ -11,6 +11,7 @@ import PasswordForgetPage from './PasswordForget';
 import SignUpPage from './SignUp';
 import withAuthentication from './withAuthentication';
 import BlockPage from './BlockPage';
+import TxPage from './TxPage';
 
 const App = () =>
   <Router>
@@ -48,6 +49,11 @@ const App = () =>
       <Route
         exact path={routes.EXPLORER_BLOCK}
         component={() => <BlockPage />}
+      />
+
+      <Route
+        exact path={routes.EXPLORER_TX_HASH}
+        component={() => <TxPage />}
       />
 
     </div>
