@@ -14,7 +14,6 @@ const byPropKey = (propertyName, value) => () => ({
 });
 
 
-
 class Setup extends Component {
     constructor(props){
         super(props);
@@ -22,13 +21,6 @@ class Setup extends Component {
 
         this.setupPath = db.ref("path");
         this.handleSubmit = this.handleSubmit.bind(this);
-
-        let checkPath = db.ref();
-        checkPath.once('value', function(snapshot) {
-          if (snapshot.hasChild("path")) {
-            alert("YES");
-          }
-        });
     }
 
     handleSubmit(event) {

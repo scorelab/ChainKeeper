@@ -12,12 +12,18 @@ import SignUpPage from './SignUp';
 import withAuthentication from './withAuthentication';
 import BlockPage from './BlockPage';
 import TxPage from './TxPage';
+import MainLandingPage from './Landing';
 
 const App = () =>
   <Router>
     <div>
       <Route
         exact path={routes.LANDING}
+        component={() => <MainLandingPage />}
+      />
+
+      <Route
+        exact path={routes.SETUP}
         component={() => <Setup />}
       />
 

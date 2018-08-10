@@ -1,6 +1,7 @@
 export const SIGN_UP = '/signup';
 export const SIGN_IN = '/signin';
 export const LANDING = '/';
+export const SETUP = '/setup';
 export const HOME = '/home';
 export const EXPLORER_BLOCK = '/explorer/block/:id';
 export const EXPLORER_BLOCK_HASH = '/explorer/block_hash/:blk_id';
