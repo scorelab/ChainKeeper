@@ -64,7 +64,7 @@ const App = () =>
 
       <Route
         exact path={routes.EXPLORER_BLOCK_HASH}
-        component={() => <TxPage />}
+        render={(props) => <BlockPage {...props} /> }
       />
 
     </div>
