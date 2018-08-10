@@ -18,7 +18,6 @@ class LandingPage extends Component {
         this.state = {
             redirect: ""
           };
-
     }
 
   renderRedirect = () => {
@@ -59,7 +58,8 @@ class LandingPage extends Component {
         {this.renderRedirect()}
         <div className="row" style={{marginTop:"30px"}}>
             <div className="col-md-12">
-                <h3 style={{textAlign:"center"}}>LOADING ....</h3>
+                <h1 style={{textAlign:"center",fontSize:"55px"}}><i className="fa fa-spinner fa-spin"/></h1>
+                <h3 style={{textAlign:"center",marginTop:"20px"}}>LOADING ....</h3>
             </div>
         </div>
       </div>
