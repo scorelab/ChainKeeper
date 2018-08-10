@@ -4,6 +4,9 @@ import './App.css';
 import { withRouter } from 'react-router';
 
 class Setup extends Component {
+    componentDidMount(){
+        this.interval = setInterval(() => this.tick(), 1000);
+    }
 
     onSubmit = (event) => {
         this.props.history.push('/home')
