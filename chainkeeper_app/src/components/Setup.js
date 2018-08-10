@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import logo from '../public/images/logo.png';
 import './App.css';
 import { withRouter } from 'react-router';
+import {database} from "../firebase/firebase";
 
 class Setup extends Component {
     componentDidMount(){
-        this.interval = setInterval(() => this.tick(), 1000);
+
     }
 
     onSubmit = (event) => {
