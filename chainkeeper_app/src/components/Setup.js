@@ -6,6 +6,7 @@ import {db} from "../firebase/firebase";
 
 const FORM_STATE = {
   path:'',
+  error:null,
 };
 
 const byPropKey = (propertyName, value) => () => ({
@@ -15,19 +16,19 @@ const byPropKey = (propertyName, value) => () => ({
 
 
 class Setup extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = { ...FORM_STATE };
-
 
         this.setupPath = db.ref("path");
         this.handleSubmit = this.handleSubmit.bind(this);
 
-        // setupPath.once('value', function(snapshot) {
-        //   if (snapshot.hasChild("mempool")) {
-        //     this.props.history.push('/home')
-        //   }
-        // });
+        let checkPath = db.ref();
+        checkPath.once('value', function(snapshot) {
+          if (snapshot.hasChild("path")) {
+            alert("YES");
+          }
+        });
     }
 
     handleSubmit(event) {
@@ -47,7 +48,8 @@ class Setup extends Component {
 
     render() {
         const {
-            path
+            path,
+            error,
         } = this.state;
 
         const isInvalid =
