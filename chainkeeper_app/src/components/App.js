@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router,Route, } from 'react-router-dom';
+import { BrowserRouter as Router , Route} from 'react-router-dom';
 import './App.css';
 
 import * as routes from '../constants/routes';
@@ -48,7 +48,7 @@ const App = () =>
 
       <Route
         exact path={routes.EXPLORER_BLOCK}
-        component={() => <BlockPage />}
+        render={(props) => <BlockPage {...props} /> }
       />
 
       <Route
@@ -58,7 +58,7 @@ const App = () =>
 
       <Route
         exact path={routes.EXPLORER_BLOCK_HASH}
-        component={() => <BlockPage />}
+        component={() => <TxPage />}
       />
 
     </div>

@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import NavigationComp from './Navigation';
+import { withRouter } from 'react-router-dom';
+
 import '../public/css/main.css';
 import '../public/fonts/font-awesome-4.7.0/css/font-awesome.css';
 import './App.css';
 
-const BlockPage = () =>
-  <div>
-       <NavigationComp/>
-       <BlockData />
-  </div>
+// const BlockPage = () =>
+//   <div>
+//        <NavigationComp/>
+//        <BlockData />
+//   </div>
 
-class BlockData extends Component {
+class BlockPage extends Component {
+  componentDidMount() {
+       console.log(this.props.match.params.id);
+  }
 
   render() {
     return (
+      <div>
+        <NavigationComp/>
       <div className="container">
         <div className="row" style={{marginTop:"40px"}}>
             <div className="col-md-12">
@@ -138,6 +145,7 @@ class BlockData extends Component {
                 </div>
             </div>
         </div>
+      </div>
       </div>
     );
   }
