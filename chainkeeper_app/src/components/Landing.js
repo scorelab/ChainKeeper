@@ -26,16 +26,16 @@ class LandingPage extends Component {
     componentDidMount() {
         let checkPath = db.ref();
         let valType = null;
-        checkPath.once('value', function (snapshot) {
+        checkPath.once('value', (snapshot) => {
             if (snapshot.hasChild("path")) {
                 valType = "home";
             } else {
                 valType = "setup";
             }
-        });
 
-        this.setState({
+          this.setState({
             redirect: valType
+          });
         });
 
         console.log(valType);
