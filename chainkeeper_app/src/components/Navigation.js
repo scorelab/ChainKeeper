@@ -44,7 +44,7 @@ class NavigationComp extends Component {
                     ?
                     <nav className="navbar navbar-expand-lg"
                          style={{backgroundColor: "#074a84", borderColor: "none", height: "80px"}}>
-                        <a className="navbar-brand" href="#" style={{color: "#ffffff"}}><b>CHAIN_KEEPER</b></a>
+                        <a className="navbar-brand" href="/" style={{color: "#ffffff"}}><b>CHAIN_KEEPER</b></a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarText"
                                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,7 +91,7 @@ class NavigationComp extends Component {
                     :
                     <nav className="navbar navbar-expand-lg"
                          style={{backgroundColor: "#074a84", borderColor: "none", height: "80px"}}>
-                        <a className="navbar-brand" href="#" style={{color: "#ffffff"}}><b>CHAIN_KEEPER</b></a>
+                        <a className="navbar-brand" href="/" style={{color: "#ffffff"}}><b>CHAIN_KEEPER</b></a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarText"
                                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
