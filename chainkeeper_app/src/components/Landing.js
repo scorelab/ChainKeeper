@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import NavigationComp from './Navigation';
 import {db} from "../firebase/firebase";
+import { withRouter } from 'react-router';
+import { Redirect } from 'react-router'
 
 const MainLandingPage = () =>
   <div>
@@ -9,20 +11,35 @@ const MainLandingPage = () =>
   </div>
 
 class LandingPage extends Component {
-  constructor(props){
-      super(props);
-      this.componentDidMount = this.componentDidMount.bind(this);
-  }
+  state = {
+    redirect: ""
+  };
 
-  componentDidMount = () =>{
+  renderRedirect = () => {
+    if (this.state.redirect === "home") {
+      return <Redirect to='/home' />
+    }else if(this.state.redirect === "setup"){
+      return <Redirect to='/setup' />
+    }
+  };
+
+    componentDidMount() {
         let checkPath = db.ref();
-        checkPath.once('value', function(snapshot) {
-          if (snapshot.hasChild("path")) {
-            this.props.history.push('/home');
-          }else{
-              
-          }
+        let valType = null;
+        checkPath.once('value', function (snapshot) {
+            if (snapshot.hasChild("path")) {
+                valType = "home";
+            } else {
+                valType = "setup";
+            }
         });
+
+        this.setState({
+            redirect: valType
+        });
+
+        console.log(valType);
+        console.log(this.state);
     };
 
   render() {
@@ -30,6 +47,7 @@ class LandingPage extends Component {
       <div className="container">
         <div className="row" style={{marginTop:"30px"}}>
             <div className="col-md-12">
+                {this.renderRedirect()}
                 <h3 style={{textAlign:"center"}}>LOADING ....</h3>
             </div>
         </div>
@@ -40,4 +58,4 @@ class LandingPage extends Component {
 }
 
 
-export default MainLandingPage;
+export default withRouter(MainLandingPage);
