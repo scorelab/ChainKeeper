@@ -11,9 +11,15 @@ const MainLandingPage = () =>
   </div>
 
 class LandingPage extends Component {
-  state = {
-    redirect: ""
-  };
+
+  constructor() {
+        super();
+
+        this.state = {
+            redirect: ""
+          };
+
+    }
 
   renderRedirect = () => {
     if (this.state.redirect === "home") {
@@ -24,6 +30,8 @@ class LandingPage extends Component {
   };
 
     componentDidMount() {
+        this.mounted = true;
+
         let checkPath = db.ref();
         let valType = null;
         checkPath.once('value', (snapshot) => {
@@ -33,21 +41,24 @@ class LandingPage extends Component {
                 valType = "setup";
             }
 
-          this.setState({
-            redirect: valType
-          });
+          if(this.mounted) {
+              this.setState({
+                  redirect: valType
+              });
+          }
         });
-
-        console.log(valType);
-        console.log(this.state);
     };
+
+    componentWillUnmount(){
+        this.mounted = false;
+    }
 
   render() {
     return (
       <div className="container">
+        {this.renderRedirect()}
         <div className="row" style={{marginTop:"30px"}}>
             <div className="col-md-12">
-                {this.renderRedirect()}
                 <h3 style={{textAlign:"center"}}>LOADING ....</h3>
             </div>
         </div>
