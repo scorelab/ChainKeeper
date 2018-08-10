@@ -56,6 +56,11 @@ const App = () =>
         component={() => <TxPage />}
       />
 
+      <Route
+        exact path={routes.EXPLORER_BLOCK_HASH}
+        component={() => <BlockPage />}
+      />
+
     </div>
   </Router>
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import AuthUserContext from './AuthUserContext';
 import {auth} from "../firebase";
+import { withRouter } from 'react-router-dom';
 
 
 class NavigationComp extends Component {
@@ -8,8 +9,10 @@ class NavigationComp extends Component {
         super(props);
     }
 
-    getValueFromUser(event){
+    getValueFromUser = (event) => {
         if(event) event.preventDefault();
+        let path;
+
         const [input] = event.target.children;
 
         //check the type of the input
@@ -17,17 +20,20 @@ class NavigationComp extends Component {
         let sizeOfInput = userInput.length;
 
         if(sizeOfInput === 34){
-            console.log("Address");
+            alert("YOU ENTERED AN ADDRESS!");
         }else if(sizeOfInput === 64){
             if(userInput.substring(0, 4) === "0000"){
-                console.log("Block Hash");
+                path = "/explorer/block_hash/"+userInput;
+                this.props.history.push(path);
             }else{
-                console.log("TX Hash");
+                path = "/explorer/tx/"+userInput;
+                this.props.history.push(path);
             }
         }else if(/^\d+$/.test(userInput)){
-            console.log("Block Id");
+            path = "/explorer/block/"+userInput;
+            this.props.history.push(path);
         }else{
-            console.log("Invalid Format");
+            alert("INVALID FORMAT. TRY AGAIN! ");
         }
     };
 
@@ -62,7 +68,6 @@ class NavigationComp extends Component {
                                     className="form-control mr-sm-2"
                                     type="text"
                                     name="enterVal"
-                                    value={this.state.enterVal}
                                     style={{marginLeft: "-40px !important", width: "270px"}}
                                     placeholder="BLOCK, HASH, TRANSACTION ..."/>
                                 <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -124,4 +129,4 @@ class NavigationComp extends Component {
 }
 
 
-export default NavigationComp;
+export default withRouter(NavigationComp);

@@ -25,7 +25,7 @@ class Setup extends Component {
                         <div className="col-md-8 offset-md-2">
                             <form onSubmit={this.onSubmit}>
                                 <input className="form-control mr-sm-2" type="search" placeholder="Enter blockchain path" style={{width:"100%",marginBottom:"10px"}} aria-label="Search"/>
-                                <button className="btn" type="submit" style={{width:"20%" , backgroundColor:"#e6e6e6", color:"#000000", border:"2px solid #00797B"}}>Submit</button>
+                                <button className="btn" type="submit" style={{width:"20%" , backgroundColor:"#e6e6e6", color:"#000000", border:"2px solid #074a84"}}>Submit</button>
                             </form>
                         </div>
                     </div>
