@@ -232,7 +232,7 @@ var Alert = function ($) {
 
     // getters
 
-    // public
+    // images
 
     Alert.prototype.close = function close(element) {
       element = element || this._element;
@@ -413,7 +413,7 @@ var Button = function ($) {
 
     // getters
 
-    // public
+    // images
 
     Button.prototype.toggle = function toggle() {
       var triggerChangeEvent = true;
@@ -636,7 +636,7 @@ var Carousel = function ($) {
 
     // getters
 
-    // public
+    // images
 
     Carousel.prototype.next = function next() {
       if (!this._isSliding) {
@@ -1128,7 +1128,7 @@ var Collapse = function ($) {
 
     // getters
 
-    // public
+    // images
 
     Collapse.prototype.toggle = function toggle() {
       if ($(this._element).hasClass(ClassName.SHOW)) {
@@ -1501,7 +1501,7 @@ var Dropdown = function ($) {
 
     // getters
 
-    // public
+    // images
 
     Dropdown.prototype.toggle = function toggle() {
       if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED)) {
@@ -1914,7 +1914,7 @@ var Modal = function ($) {
 
     // getters
 
-    // public
+    // images
 
     Modal.prototype.toggle = function toggle(relatedTarget) {
       return this._isShown ? this.hide() : this.show(relatedTarget);
@@ -2486,7 +2486,7 @@ var ScrollSpy = function ($) {
 
     // getters
 
-    // public
+    // images
 
     ScrollSpy.prototype.refresh = function refresh() {
       var _this21 = this;
@@ -2770,7 +2770,7 @@ var Tab = function ($) {
 
     // getters
 
-    // public
+    // images
 
     Tab.prototype.show = function show() {
       var _this22 = this;
@@ -3090,7 +3090,7 @@ var Tooltip = function ($) {
 
     // getters
 
-    // public
+    // images
 
     Tooltip.prototype.enable = function enable() {
       this._isEnabled = true;

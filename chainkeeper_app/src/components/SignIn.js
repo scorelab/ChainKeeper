@@ -7,11 +7,11 @@ import LoginwithGoogle from './LoginwithGoogle';
 import { auth } from '../firebase';
 import * as routes from '../constants/routes';
 
-import Navigation from './Navigation';
+import NavigationComp from './Navigation';
 
 const SignInPage = ({ history }) =>
   <div>
-    <Navigation/>
+    <NavigationComp/>
     <SignInForm history={history} />
   </div>
 
@@ -65,7 +65,7 @@ class SignInForm extends Component {
       email === '';
 
     return (
-            <div className="limiter">
+            <div className="limiter" style={{marginTop:"20px"}}>
                 <div className="container-login100">
                     <div className="wrap-login100">
                         <form className="login100-form validate-form" onSubmit={this.onSubmit}>
@@ -99,7 +99,7 @@ class SignInForm extends Component {
                             <div className="container-login100-form-btn">
                                 <div className="wrap-login100-form-btn">
                                     <div className="login100-form-bgbtn"/>
-                                    <button className="login100-form-btn" style={{backgroundColor:"#00797B"}} disabled={isInvalid} type="submit">
+                                    <button className="login100-form-btn" style={{backgroundColor:"#074a84"}} disabled={isInvalid} type="submit">
                                       Sign In
                                     </button>
                                 </div>
@@ -112,7 +112,7 @@ class SignInForm extends Component {
                                 </span>
                             </div>
 
-                            <div className="text-center p-t-10">
+                            <div className="text-center p-t-10" style={{marginTop:"20px"}}>
                                 <span className="txt1">
                                      <PasswordForgetLink />
                                 </span>

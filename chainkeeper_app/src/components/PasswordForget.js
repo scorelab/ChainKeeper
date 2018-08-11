@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 import { auth } from '../firebase';
 import * as routes from "../constants/routes";
-import Navigation from './Navigation';
+import NavigationComp from './Navigation';
 
 const PasswordForgetPage = () =>
   <div>
-    <Navigation/>
+    <NavigationComp/>
     <PasswordForgetForm />
   </div>
 
@@ -72,7 +72,7 @@ class PasswordForgetForm extends Component {
                             <div className="container-login100-form-btn">
                                 <div className="wrap-login100-form-btn">
                                     <div className="login100-form-bgbtn"/>
-                                    <button className="login100-form-btn" disabled={isInvalid} type="submit"  style={{backgroundColor:"#00797B"}} >
+                                    <button className="login100-form-btn" disabled={isInvalid} type="submit"  style={{backgroundColor:"#074a84"}} >
                                      Reset My Password
                                     </button>
 

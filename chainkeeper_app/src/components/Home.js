@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Navigation from './Navigation';
+import NavigationComp from './Navigation';
 
 const MainPage = () =>
   <div>
-       <Navigation/>
+       <NavigationComp/>
        <HomePage />
   </div>
 
@@ -17,7 +17,7 @@ class HomePage extends Component {
                 <h3>LATEST BLOCKS</h3>
 
                 <div>
-                    <table class="table table-striped" style={{marginTop:"20px"}}>
+                    <table id="latestBlocks" className="table table-striped" style={{marginTop:"20px"}}>
                         <thead>
                         <tr>
                             <th scope="col">Height</th>
