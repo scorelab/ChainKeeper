@@ -1,11 +1,14 @@
 from flask import Flask, jsonify
 import sys
+from flask_cors import CORS
+
 sys.path.insert(0, 'services')
 
 from blockchain import *
 from tx import *
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/blocksci/api/v5/block/<int:block_height>', methods=['GET'])
 def get_block(block_height):
