@@ -77,11 +77,13 @@ def getTxDataWithHash(tx_hash):
 
     txData = {
         "block_height": txData.block_height,
-        "tx_index": txData.tx_index,
+        "tx_index": txData.index,
         "tx_hash": str(txData.tx_hash),
         "numIns": len(txData.txins),
         "numOuts": len(txData.txouts),
-        "size_bytes": txData.size_bytes
+        "size_bytes": txData.size_bytes,
+        "weight": txData.weight,
+        "output_value": (txData.output_value / 100000000)
     }
 
     response["data"] = txData
@@ -98,11 +100,13 @@ def getTxDataWithIndex(tx_index):
 
     txData = {
         "block_height": txData.block_height,
-        "tx_index": txData.tx_index,
+        "tx_index": txData.index,
         "tx_hash": str(txData.tx_hash),
         "numIns": len(txData.txins),
         "numOuts": len(txData.txouts),
-        "size_bytes": txData.size_bytes
+        "size_bytes": txData.size_bytes,
+        "weight": txData.weight,
+        "output_value": (txData.output_value / 100000000)
     }
 
     response["data"] = txData
