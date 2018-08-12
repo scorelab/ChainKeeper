@@ -13,7 +13,7 @@ def getBlockData(block_height):
 
     blockData = {
         "height": blockData.height,
-        "block_hash": blockData.hash,
+        "block_hash": str(blockData.hash),
         "output_value": blockData.output_value,
         "numTxes": blockData.tx_count,
         "timestamp": blockData.timestamp,
