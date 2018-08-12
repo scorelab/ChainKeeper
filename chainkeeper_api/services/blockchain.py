@@ -14,7 +14,7 @@ def getBlockData(block_height):
     blockData = {
         "height": blockData.height,
         "block_hash": str(blockData.hash),
-        "output_value": blockData.output_value,
+        "output_value": (blockData.output_value/100000000),
         "numTxes": blockData.tx_count,
         "timestamp": blockData.timestamp,
         "size": blockData.size_bytes,
@@ -43,7 +43,7 @@ def getBlockRangeData(block_height1,block_height2):
             blockData = {
                 "height": blockData.height,
                 "block_hash": str(blockData.hash),
-                "output_value": blockData.output_value,
+                "output_value": (blockData.output_value/100000000),
                 "numTxes": blockData.tx_count,
                 "timestamp": blockData.timestamp,
                 "size": blockData.size_bytes,
