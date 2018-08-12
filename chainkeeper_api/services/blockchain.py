@@ -69,47 +69,58 @@ def getBlockRangeData(block_height1,block_height2):
 
 #get tx data function with hash
 def getTxDataWithHash(tx_hash):
-    txData = chain.tx_with_hash(tx_hash)
     response = {
         "data": {},
         "status": "success"
     }
 
-    txData = {
-        "block_height": txData.block_height,
-        "tx_index": txData.index,
-        "tx_hash": str(txData.hash),
-        "numIns": len(txData.inputs),
-        "numOuts": len(txData.outputs),
-        "size_bytes": txData.size_bytes,
-        "weight": txData.weight,
-        "output_value": (txData.output_value / 100000000)
-    }
+    try:
+        txData = chain.tx_with_hash(tx_hash)
 
-    response["data"] = txData
-    return jsonify(response)
+        txData = {
+            "block_height": txData.block_height,
+            "tx_index": txData.index,
+            "tx_hash": str(txData.hash),
+            "numIns": len(txData.inputs),
+            "numOuts": len(txData.outputs),
+            "size_bytes": txData.size_bytes,
+            "weight": txData.weight,
+            "output_value": (txData.output_value / 100000000)
+        }
+
+        response["data"] = txData
+        return jsonify(response)
+
+    except ValueError:
+        response["status"] = "failed: Input tx hash not found"
+        return jsonify(response)
 
 
 #get tx data function with tx_index
 def getTxDataWithIndex(tx_index):
-    txData = chain.tx_with_hash(tx_index)
     response = {
         "data": {},
         "status": "success"
     }
 
-    txData = {
-        "block_height": txData.block_height,
-        "tx_index": txData.index,
-        "tx_hash": str(txData.hash),
-        "numIns": len(txData.inputs),
-        "numOuts": len(txData.outputs),
-        "size_bytes": txData.size_bytes,
-        "weight": txData.weight,
-        "output_value": (txData.output_value / 100000000)
-    }
+    try:
+        txData = chain.tx_with_hash(int(tx_index))
 
-    response["data"] = txData
-    return jsonify(response)
+        txData = {
+            "block_height": txData.block_height,
+            "tx_index": txData.index,
+            "tx_hash": str(txData.hash),
+            "numIns": len(txData.inputs),
+            "numOuts": len(txData.outputs),
+            "size_bytes": txData.size_bytes,
+            "weight": txData.weight,
+            "output_value": (txData.output_value / 100000000)
+        }
+
+        response["data"] = txData
+        return jsonify(response)
+    except ValueError:
+        response["status"] = "failed: Input tx index not found"
+        return jsonify(response)
 
 
