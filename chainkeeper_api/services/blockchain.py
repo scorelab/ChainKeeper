@@ -136,10 +136,10 @@ def getLatestBlocks():
     }
 
     lastBlockHeight = len(chain.blocks)
+    eleIndex = (lastBlockHeight - 9)
     element = []
     for x in range(10):
-        eleIndex = (lastBlockHeight - (9-x))
-        blockData = chain.blocks[eleIndex]
+        blockData = chain.blocks[eleIndex + x]
 
         blockData = {
             "height": blockData.height,
