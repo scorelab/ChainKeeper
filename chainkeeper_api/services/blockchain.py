@@ -78,7 +78,7 @@ def getTxDataWithHash(tx_hash):
     txData = {
         "block_height": txData.block_height,
         "tx_index": txData.index,
-        "tx_hash": str(txData.tx_hash),
+        "tx_hash": str(txData.hash),
         "numIns": len(txData.txins),
         "numOuts": len(txData.txouts),
         "size_bytes": txData.size_bytes,
@@ -101,7 +101,7 @@ def getTxDataWithIndex(tx_index):
     txData = {
         "block_height": txData.block_height,
         "tx_index": txData.index,
-        "tx_hash": str(txData.tx_hash),
+        "tx_hash": str(txData.hash),
         "numIns": len(txData.txins),
         "numOuts": len(txData.txouts),
         "size_bytes": txData.size_bytes,
