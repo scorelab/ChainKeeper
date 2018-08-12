@@ -38,7 +38,7 @@ def getBlockRangeData(block_height1,block_height2):
         return jsonify(response)
     else:
         element = []
-        for x in range(rangeVal):
+        for x in range(rangeVal + 1):
             blockData = chain.blocks[block_height1 + x]
 
             blockData = {
