@@ -1,5 +1,6 @@
 from flask import jsonify
 import blocksci
+import sys
 
 chain = blocksci.Blockchain("/root/bitcoin-data/blocksci-514496-v5")
 
@@ -91,8 +92,10 @@ def getTxDataWithHash(tx_hash):
         response["data"] = txData
         return jsonify(response)
 
-    except ValueError:
-        response["status"] = "failed: Input tx hash not found"
+
+    except:  # catch *all* exceptions
+        e = sys.exc_info()[0]
+        response["status"] = str(e)
         return jsonify(response)
 
 
@@ -104,7 +107,7 @@ def getTxDataWithIndex(tx_index):
     }
 
     try:
-        txData = chain.tx_with_hash(int(tx_index))
+        txData = chain.tx_with_index(int(tx_index))
 
         txData = {
             "block_height": txData.block_height,
@@ -119,8 +122,9 @@ def getTxDataWithIndex(tx_index):
 
         response["data"] = txData
         return jsonify(response)
-    except ValueError:
-        response["status"] = "failed: Input tx index not found"
+    except:  # catch *all* exceptions
+        e = sys.exc_info()[0]
+        response["status"] = str(e)
         return jsonify(response)
 
 
