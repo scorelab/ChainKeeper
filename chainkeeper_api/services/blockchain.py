@@ -37,6 +37,7 @@ def getBlockRangeData(block_height1,block_height2):
         response["status"] = "failed: Invalid block range"
         return jsonify(response)
     else:
+        element = []
         for x in range(rangeVal):
             blockData = chain.blocks[block_height1 + x]
 
@@ -50,7 +51,8 @@ def getBlockRangeData(block_height1,block_height2):
                 "nonce": blockData.nonce
             }
 
-            response["data"][x] = blockData
+            element.append(blockData)
+        response["data"] = element
 
     return jsonify(response)
 
