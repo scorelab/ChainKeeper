@@ -128,3 +128,29 @@ def getTxDataWithIndex(tx_index):
         return jsonify(response)
 
 
+#get latest blocks
+def getLatestBlocks():
+    response = {
+        "data": {},
+        "status": "success"
+    }
+
+    lastBlockHeight = len(chain.blocks)
+    element = []
+    for x in range(10):
+        blockData = chain.blocks[lastBlockHeight - (9-x)]
+
+        blockData = {
+            "height": blockData.height,
+            "block_hash": str(blockData.hash),
+            "output_value": (blockData.output_value / 100000000),
+            "numTxes": blockData.tx_count,
+            "timestamp": blockData.timestamp,
+            "size": blockData.size_bytes,
+            "nonce": blockData.nonce
+        }
+
+        element.append(blockData)
+    response["data"] = element
+
+    return jsonify(response)

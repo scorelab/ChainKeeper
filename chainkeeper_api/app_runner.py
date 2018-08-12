@@ -39,6 +39,10 @@ def get_tx_outputs(tx_hash):
 def get_tx_outputs_index(tx_index):
     return getTxOutputsIndex(tx_index)
 
+@app.route('/blocksci/api/v5/latest_blocks', methods=['GET'])
+def get_latest_blocks():
+    return getLatestBlocks()
+
 
 if __name__ == '__main__':
    app.run(host='0.0.0.0',port=8888)
