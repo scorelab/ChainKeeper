@@ -18,7 +18,7 @@ def getTxInputs(tx_hash):
         for x in range(len(txInputs)):
             inputData = {
                 "spent_tx_index": txInputs[x].spent_tx_index,
-                "address": txInputs[x].address,
+                "address": str(txInputs[x].address),
                 "value": (txInputs[x].value/100000000),
                 "age": txInputs[x].age,
                 "block_height": txInputs[x].block.height,
@@ -50,7 +50,7 @@ def getTxInputsIndex(tx_index):
         for x in range(len(txInputs)):
             inputData = {
                 "spent_tx_index": txInputs[x].spent_tx_index,
-                "address": txInputs[x].address,
+                "address": str(txInputs[x].address),
                 "value": (txInputs[x].value/100000000),
                 "age": txInputs[x].age,
                 "block_height": txInputs[x].block.height,
@@ -82,7 +82,7 @@ def getTxOutputs(tx_hash):
             outputData = {
                 "is_spent": txOutputs[x].is_spent,
                 "spending_tx_index": txOutputs[x].spending_tx_index,
-                "address": txOutputs[x].address,
+                "address": str(txOutputs[x].address),
                 "value": (txOutputs[x].value/100000000),
                 "block_height": txOutputs[x].block.height
             }
@@ -113,7 +113,7 @@ def getTxOutputsIndex(tx_index):
             outputData = {
                 "is_spent": txOutputs[x].is_spent,
                 "spending_tx_index": txOutputs[x].spending_tx_index,
-                "address": txOutputs[x].address,
+                "address": str(txOutputs[x].address),
                 "value": (txOutputs[x].value/100000000),
                 "block_height": txOutputs[x].block.height
             }
