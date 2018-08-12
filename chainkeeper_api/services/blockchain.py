@@ -1,4 +1,4 @@
-import json
+from flask import jsonify
 import blocksci
 
 chain = blocksci.Blockchain("/root/bitcoin-data/blocksci-514496-v5")
@@ -22,9 +22,7 @@ def getBlockData(block_height):
     }
 
     response["data"] = blockData
-    string_res = json.dumps(response)
-    parsed_json = json.loads(string_res)
-    return parsed_json
+    return jsonify(response)
 
 #get block data function for block data range
 def getBlockRangeData(block_height1,block_height2):
@@ -44,7 +42,7 @@ def getBlockRangeData(block_height1,block_height2):
 
             blockData = {
                 "height": blockData.height,
-                "block_hash": blockData.hash,
+                "block_hash": str(blockData.hash),
                 "output_value": blockData.output_value,
                 "numTxes": blockData.tx_count,
                 "timestamp": blockData.timestamp,
