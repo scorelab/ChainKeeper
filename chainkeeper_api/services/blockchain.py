@@ -13,7 +13,7 @@ def getBlockData(block_height):
 
     blockData = {
         "height": blockData.height,
-        "block_hash": [{"hash": blockData.hash}],
+        "block_hash": blockData.hash.decode('utf-8'),
         "version": blockData.version,
         "numTxes": blockData.tx_count,
         "timestamp": blockData.timestamp,
@@ -42,7 +42,7 @@ def getBlockRangeData(block_height1,block_height2):
 
             blockData = {
                 "height": blockData.height,
-                "block_hash": blockData.hash,
+                "block_hash": blockData.hash.decode('utf-8'),
                 "version": blockData.version,
                 "numTxes": blockData.tx_count,
                 "timestamp": blockData.timestamp,
