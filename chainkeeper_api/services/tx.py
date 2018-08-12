@@ -12,7 +12,7 @@ def getTxInputs(tx_hash):
         "status": "success"
     }
 
-    for x in range len(txInputs):
+    for x in range(len(txInputs)):
         inputData = {
             "spent_tx_index": txInputs[x].spent_tx_index,
             "address": txInputs[x].address,
@@ -36,7 +36,7 @@ def getTxInputsIndex(tx_index):
         "status": "success"
     }
 
-    for x in range len(txInputs):
+    for x in range(len(txInputs)):
         inputData = {
             "spent_tx_index": txInputs[x].spent_tx_index,
             "address": txInputs[x].address,
@@ -60,7 +60,7 @@ def getTxOutputs(tx_hash):
         "status": "success"
     }
 
-    for x in range len(txOutputs):
+    for x in range(len(txOutputs)):
         outputData = {
             "is_spent": txOutputs[x].is_spent,
             "spending_tx_index": txOutputs[x].spending_tx_index,
@@ -83,7 +83,7 @@ def getTxOutputsIndex(tx_index):
         "status": "success"
     }
 
-    for x in range len(txOutputs):
+    for x in range(len(txOutputs)):
         outputData = {
             "is_spent": txOutputs[x].is_spent,
             "spending_tx_index": txOutputs[x].spending_tx_index,
