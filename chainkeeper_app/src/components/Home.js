@@ -13,33 +13,25 @@ class HomePage extends Component {
 
     this.state = {
       elements: [],
+      isLoading: false,
     };
   }
 
   componentDidMount() {
-  let headers = new Headers();
+     this.setState({ isLoading: true });
 
-  headers.append('Content-Type', 'application/json');
-  headers.append('Accept', 'application/json');
-
-  headers.append('Access-Control-Allow-Origin', '*');
-
-  headers.append('GET', 'POST', 'OPTIONS');
-
-    let options = {
-      method: 'GET',
-      mode: 'cors',
-      header: headers
-    };
-
-    fetch("http://192.248.22.171:8080/blocksci/api/v5/latest_blocks", options)
+    fetch("http://192.248.22.171:8080/blocksci/api/v5/latest_blocks")
       .then(response => response.json())
-      .then(hits => this.setState({ elements: hits.data }));
+      .then(hits => this.setState({ elements: hits.data, isLoading: false }));
   }
 
 
   render() {
-    const { elements } = this.state;
+    const { elements, isLoading } = this.state;
+
+    if (isLoading) {
+      return <p style={{textAlign:"center", marginTop:"80px"}}>Loading ...</p>;
+    }
 
     return (
       <div className="container">
@@ -63,12 +55,12 @@ class HomePage extends Component {
 
                         {elements.map(hit =>
                           <tr key={hit.height}>
-                            <td>{hit.height}</td>
+                              <td><a style={{color:"#2268ad"}} href={'/explorer/block_hash/'+ hit.height}>{hit.height}</a></td>
                             <td>{hit.timestamp}</td>
                             <td>{hit.numTxes}</td>
                             <td>{hit.output_value} BTC</td>
                             <td>{hit.size}</td>
-                            <td>{hit.block_hash}</td>
+                            <td><a style={{color:"#2268ad"}} href={'/explorer/block_hash/'+ hit.block_hash}>{hit.block_hash}</a></td>
                           </tr>
                         )}
                         </tbody>
