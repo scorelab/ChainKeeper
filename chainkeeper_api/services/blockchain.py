@@ -15,7 +15,7 @@ def getBlockData(block_height):
         "height": blockData.height,
         "block_hash": blockData.hash,
         "version": blockData.version,
-        "numTxes": blockData.numTxes,
+        "numTxes": blockData.tx_count,
         "timestamp": blockData.timestamp,
         "bits": blockData.bits,
         "nonce": blockData.nonce
