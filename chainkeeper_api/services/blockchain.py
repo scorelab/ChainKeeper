@@ -22,7 +22,8 @@ def getBlockData(block_height):
     }
 
     response["data"] = blockData
-    parsed_json = json.loads(response);
+    string_res = json.dumps(response)
+    parsed_json = json.loads(string_res)
     return parsed_json
 
 #get block data function for block data range
