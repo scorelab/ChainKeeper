@@ -8,8 +8,31 @@ const MainPage = () =>
   </div>
 
 class HomePage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      elements: [],
+      isLoading: false,
+    };
+  }
+
+  componentDidMount() {
+     this.setState({ isLoading: true });
+
+    fetch("http://192.248.22.171:8080/blocksci/api/v5/latest_blocks")
+      .then(response => response.json())
+      .then(hits => this.setState({ elements: hits.data, isLoading: false }));
+  }
+
 
   render() {
+    const { elements, isLoading } = this.state;
+
+    if (isLoading) {
+      return <p style={{textAlign:"center", marginTop:"80px"}}>Loading ...</p>;
+    }
+
     return (
       <div className="container">
         <div className="row" style={{marginTop:"30px"}}>
@@ -21,7 +44,7 @@ class HomePage extends Component {
                         <thead>
                         <tr>
                             <th scope="col">Height</th>
-                            <th scope="col">Age</th>
+                            <th scope="col">Timestamp</th>
                             <th scope="col">Transactions</th>
                             <th scope="col">Total Sent</th>
                             <th scope="col">Size (kB)</th>
@@ -29,79 +52,17 @@ class HomePage extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>535894</td>
-                            <td>7 minutes</td>
-                            <td>638</td>
-                            <td>2,092.29 BTC</td>
-                            <td>277.29</td>
-                            <td>77f1c71f5ab2085fd7be0c78433563ad73cd3ce8a539d824acfca4bced41bb35</td>
-                        </tr>
-                        <tr>
-                            <td>535894</td>
-                            <td>7 minutes</td>
-                            <td>638</td>
-                            <td>2,092.29 BTC</td>
-                            <td>277.29</td>
-                            <td>77f1c71f5ab2085fd7be0c78433563ad73cd3ce8a539d824acfca4bced41bb35</td>
-                        </tr>
-                        <tr>
-                            <td>535894</td>
-                            <td>7 minutes</td>
-                            <td>638</td>
-                            <td>2,092.29 BTC</td>
-                            <td>277.29</td>
-                            <td>77f1c71f5ab2085fd7be0c78433563ad73cd3ce8a539d824acfca4bced41bb35</td>
-                        </tr>
-                        <tr>
-                            <td>535894</td>
-                            <td>7 minutes</td>
-                            <td>638</td>
-                            <td>2,092.29 BTC</td>
-                            <td>277.29</td>
-                            <td>77f1c71f5ab2085fd7be0c78433563ad73cd3ce8a539d824acfca4bced41bb35</td>
-                        </tr>
-                        <tr>
-                            <td>535894</td>
-                            <td>7 minutes</td>
-                            <td>638</td>
-                            <td>2,092.29 BTC</td>
-                            <td>277.29</td>
-                            <td>77f1c71f5ab2085fd7be0c78433563ad73cd3ce8a539d824acfca4bced41bb35</td>
-                        </tr>
-                        <tr>
-                            <td>535894</td>
-                            <td>7 minutes</td>
-                            <td>638</td>
-                            <td>2,092.29 BTC</td>
-                            <td>277.29</td>
-                            <td>77f1c71f5ab2085fd7be0c78433563ad73cd3ce8a539d824acfca4bced41bb35</td>
-                        </tr>
-                        <tr>
-                            <td>535894</td>
-                            <td>7 minutes</td>
-                            <td>638</td>
-                            <td>2,092.29 BTC</td>
-                            <td>277.29</td>
-                            <td>77f1c71f5ab2085fd7be0c78433563ad73cd3ce8a539d824acfca4bced41bb35</td>
-                        </tr>
-                        <tr>
-                            <td>535894</td>
-                            <td>7 minutes</td>
-                            <td>638</td>
-                            <td>2,092.29 BTC</td>
-                            <td>277.29</td>
-                            <td>77f1c71f5ab2085fd7be0c78433563ad73cd3ce8a539d824acfca4bced41bb35</td>
-                        </tr>
-                        <tr>
-                            <td>535894</td>
-                            <td>7 minutes</td>
-                            <td>638</td>
-                            <td>2,092.29 BTC</td>
-                            <td>277.29</td>
-                            <td>77f1c71f5ab2085fd7be0c78433563ad73cd3ce8a539d824acfca4bced41bb35</td>
-                        </tr>
 
+                        {elements.map(hit =>
+                          <tr key={hit.height}>
+                              <td><a style={{color:"#2268ad"}} href={'/explorer/block_hash/'+ hit.height}>{hit.height}</a></td>
+                            <td>{hit.timestamp}</td>
+                            <td>{hit.numTxes}</td>
+                            <td>{hit.output_value} BTC</td>
+                            <td>{hit.size}</td>
+                            <td><a style={{color:"#2268ad"}} href={'/explorer/block_hash/'+ hit.block_hash}>{hit.block_hash}</a></td>
+                          </tr>
+                        )}
                         </tbody>
                     </table>
                 </div>

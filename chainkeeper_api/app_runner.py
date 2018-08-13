@@ -1,11 +1,14 @@
 from flask import Flask, jsonify
 import sys
+from flask_cors import CORS
+
 sys.path.insert(0, 'services')
 
 from blockchain import *
 from tx import *
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/blocksci/api/v5/block/<int:block_height>', methods=['GET'])
 def get_block(block_height):
@@ -39,6 +42,10 @@ def get_tx_outputs(tx_hash):
 def get_tx_outputs_index(tx_index):
     return getTxOutputsIndex(tx_index)
 
+@app.route('/blocksci/api/v5/latest_blocks', methods=['GET'])
+def get_latest_blocks():
+    return getLatestBlocks()
+
 
 if __name__ == '__main__':
-   app.run(debug = True)
+   app.run(host='0.0.0.0',port=8888)
