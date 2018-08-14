@@ -34,4 +34,7 @@ $ npm install
 $ npm start
 ```
 
+### Blockchain APIs
+
+[Blockchain API Documentation](https://github.com/scorelab/ChainKeeper/blob/master/chainkeeper_api/README.md)
 
