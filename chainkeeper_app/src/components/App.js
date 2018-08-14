@@ -59,7 +59,7 @@ const App = () =>
 
       <Route
         exact path={routes.EXPLORER_TX_HASH}
-        component={() => <TxPage />}
+        render={(props) => <TxPage  {...props} />}
       />
 
       <Route

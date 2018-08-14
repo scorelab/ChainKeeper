@@ -25,13 +25,16 @@ class NavigationComp extends Component {
             if(userInput.substring(0, 4) === "0000"){
                 path = "/explorer/block_hash/"+userInput;
                 this.props.history.push(path);
+                window.location.reload();
             }else{
                 path = "/explorer/tx/"+userInput;
                 this.props.history.push(path);
+                window.location.reload();
             }
         }else if(/^\d+$/.test(userInput)){
             path = "/explorer/block/"+userInput;
             this.props.history.push(path);
+            window.location.reload();
         }else{
             alert("INVALID FORMAT. TRY AGAIN! ");
         }
