@@ -15,36 +15,36 @@ def getBlockData(block_height):
         response["status"] = "failed: Maximum block height is "+str(len(chain.blocks))
         return jsonify(response)
     else:
-        blockData = chain.blocks[block_height]
+        blockDataArray = chain.blocks[block_height]
 
         blockData = {
-            "height": blockData.height,
-            "block_hash": str(blockData.hash),
-            "output_value": (blockData.output_value/100000000),
-            "numTxes": blockData.tx_count,
-            "timestamp": blockData.timestamp,
-            "size": blockData.size_bytes,
-            "nonce": blockData.nonce,
+            "height": blockDataArray.height,
+            "block_hash": str(blockDataArray.hash),
+            "output_value": (blockDataArray.output_value/100000000),
+            "numTxes": blockDataArray.tx_count,
+            "timestamp": blockDataArray.timestamp,
+            "size": blockDataArray.size_bytes,
+            "nonce": blockDataArray.nonce,
             "tx":[]
         }
 
-        numTxes = len(blockData.txes)
-        txData = blockData.txes
+        numTxes = len(blockDataArray.txes)
+        txDataArray = blockDataArray.txes
         txs = []
         for x in range(numTxes):
             txData = {
-                "block_height": txData.block_height,
-                "tx_index": txData.index,
-                "tx_hash": str(txData.hash),
-                "numIns": len(txData.inputs),
-                "numOuts": len(txData.outputs),
-                "size_bytes": txData.size_bytes,
-                "time": str(txData.time),
-                "output_value": (txData.output_value / 100000000)
+                "block_height": txDataArray.block_height,
+                "tx_index": txDataArray.index,
+                "tx_hash": str(txDataArray.hash),
+                "numIns": len(txDataArray.inputs),
+                "numOuts": len(txDataArray.outputs),
+                "size_bytes": txDataArray.size_bytes,
+                "time": str(txDataArray.time),
+                "output_value": (txDataArray.output_value / 100000000)
             }
             txs.append(txData)
 
-        blockData["tx"] = txs
+        blockDataArray["tx"] = txs
         response["data"] = blockData
         return jsonify(response)
 
