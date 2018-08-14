@@ -39,7 +39,7 @@ def getBlockData(block_height):
                 "numIns": len(txDataArray[x].inputs),
                 "numOuts": len(txDataArray[x].outputs),
                 "size_bytes": txDataArray[x].size_bytes,
-                "time": str(txDataArray[x].time),
+                "time": str(txDataArray[x].time_seen),
                 "output_value": (txDataArray[x].output_value / 100000000)
             }
             txs.append(txData)
