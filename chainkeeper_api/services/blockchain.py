@@ -20,6 +20,8 @@ def getBlockData(block_height):
         blockData = {
             "height": blockDataArray.height,
             "block_hash": str(blockDataArray.hash),
+            "prev_block":str(blockDataArray.prev_block.hash),
+            "next_block":str(blockDataArray.next_block.hash),
             "output_value": (blockDataArray.output_value/100000000),
             "numTxes": blockDataArray.tx_count,
             "timestamp": blockDataArray.timestamp,
