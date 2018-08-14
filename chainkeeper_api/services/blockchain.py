@@ -44,7 +44,7 @@ def getBlockData(block_height):
             }
             txs.append(txData)
 
-        blockDataArray["tx"] = txs
+        blockData["tx"] = txs
         response["data"] = blockData
         return jsonify(response)
 
