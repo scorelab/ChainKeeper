@@ -13,6 +13,7 @@ import withAuthentication from './withAuthentication';
 import BlockPage from './BlockPage';
 import TxPage from './TxPage';
 import MainLandingPage from './Landing';
+import ApiPage from './ApiPage';
 
 const App = () =>
   <Router>
@@ -65,6 +66,11 @@ const App = () =>
       <Route
         exact path={routes.EXPLORER_BLOCK_HASH}
         render={(props) => <BlockPage {...props} /> }
+      />
+
+      <Route
+        exact path={routes.API}
+        component={() => <ApiPage />}
       />
 
     </div>
