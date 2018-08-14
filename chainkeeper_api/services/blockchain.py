@@ -24,9 +24,27 @@ def getBlockData(block_height):
             "numTxes": blockData.tx_count,
             "timestamp": blockData.timestamp,
             "size": blockData.size_bytes,
-            "nonce": blockData.nonce
+            "nonce": blockData.nonce,
+            "tx":[]
         }
 
+        numTxes = len(blockData.txes)
+        txData = blockData.txes
+        txs = []
+        for x in range(numTxes):
+            txData = {
+                "block_height": txData.block_height,
+                "tx_index": txData.index,
+                "tx_hash": str(txData.hash),
+                "numIns": len(txData.inputs),
+                "numOuts": len(txData.outputs),
+                "size_bytes": txData.size_bytes,
+                "time": str(txData.time),
+                "output_value": (txData.output_value / 100000000)
+            }
+            txs.append(txData)
+
+        blockData["tx"] = txs
         response["data"] = blockData
         return jsonify(response)
 
