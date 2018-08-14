@@ -97,12 +97,12 @@ class TxPage extends Component {
                         {outs.length > 0
                             ? outs.map(hit =>
                                 <tr>
-                                    <td>{hit.address.split("(")[1].slice(0, -1)} </td>
+                                    <td>{hit.address.split("(")[1].slice(0, -1).split(",")[0]} </td>
                                     <td>{hit.value} BTC</td>
                                 </tr>
                             ):
                             <tr>
-                                <td>No any outputs</td>
+                                <td>No any outputs / Decode Error</td>
                                 <td>-</td>
                             </tr>
                         }
@@ -127,23 +127,23 @@ class TxPage extends Component {
                         <tbody>
                         <tr>
                             <td>Hash</td>
-                            <td>a1537589f42c9f9251e3b0d8bfa59a94d2aaf961bbe5163b2b4ea20687fda000</td>
+                            <td><a style={{color:"#2268ad"}}  href={'/explorer/tx/'+this.state.elements.tx_hash}>{this.state.elements.tx_hash}</a></td>
                         </tr>
                         <tr>
                             <td>Size</td>
-                            <td>290 (bytes)</td>
+                            <td>{this.state.elements.size_bytes} (bytes)</td>
                         </tr>
                         <tr>
                             <td>Weight</td>
-                            <td>1052</td>
+                            <td>{this.state.elements.weight}</td>
                         </tr>
                         <tr>
-                            <td>Confirmations</td>
-                            <td>14</td>
+                            <td>Tx Index</td>
+                            <td>{this.state.elements.tx_index}</td>
                         </tr>
                         <tr>
                             <td>Total Amount</td>
-                            <td>234.4 BTC</td>
+                            <td>{this.state.elements.output_value} BTC</td>
                         </tr>
 
                         </tbody>
