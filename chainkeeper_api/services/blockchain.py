@@ -33,14 +33,14 @@ def getBlockData(block_height):
         txs = []
         for x in range(numTxes):
             txData = {
-                "block_height": txDataArray.block_height,
-                "tx_index": txDataArray.index,
-                "tx_hash": str(txDataArray.hash),
-                "numIns": len(txDataArray.inputs),
-                "numOuts": len(txDataArray.outputs),
-                "size_bytes": txDataArray.size_bytes,
-                "time": str(txDataArray.time),
-                "output_value": (txDataArray.output_value / 100000000)
+                "block_height": txDataArray[x].block_height,
+                "tx_index": txDataArray[x].index,
+                "tx_hash": str(txDataArray[x].hash),
+                "numIns": len(txDataArray[x].inputs),
+                "numOuts": len(txDataArray[x].outputs),
+                "size_bytes": txDataArray[x].size_bytes,
+                "time": str(txDataArray[x].time),
+                "output_value": (txDataArray[x].output_value / 100000000)
             }
             txs.append(txData)
 
