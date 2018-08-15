@@ -25,13 +25,16 @@ class NavigationComp extends Component {
             if(userInput.substring(0, 4) === "0000"){
                 path = "/explorer/block_hash/"+userInput;
                 this.props.history.push(path);
+                window.location.reload();
             }else{
                 path = "/explorer/tx/"+userInput;
                 this.props.history.push(path);
+                window.location.reload();
             }
         }else if(/^\d+$/.test(userInput)){
             path = "/explorer/block/"+userInput;
             this.props.history.push(path);
+            window.location.reload();
         }else{
             alert("INVALID FORMAT. TRY AGAIN! ");
         }
@@ -57,7 +60,7 @@ class NavigationComp extends Component {
                                         className="sr-only">(current)</span></a>
                                 </li>
                                 <li className="nav-item item-hover" style={{margin: "0 10px 0 10px"}}>
-                                    <a className="nav-link" href="/explorer" style={{color: "#ffffff"}}>API</a>
+                                    <a className="nav-link" href="/api/blockchain_api" style={{color: "#ffffff"}}>API</a>
                                 </li>
                                 <li className="nav-item item-hover" style={{margin: "0 20px 0 10px"}}>
                                     <a className="nav-link" href="/" style={{color: "#ffffff"}}>ADD TAGS</a>
@@ -104,7 +107,7 @@ class NavigationComp extends Component {
                                         className="sr-only">(current)</span></a>
                                 </li>
                                 <li className="nav-item item-hover" style={{margin: "0 10px 0 10px"}}>
-                                    <a className="nav-link" href="/explorer" style={{color: "#ffffff"}}>API</a>
+                                    <a className="nav-link" href="/api/blockchain_api" style={{color: "#ffffff"}}>API</a>
                                 </li>
                                 <li className="nav-item item-hover" style={{margin: "0 20px 0 10px"}}>
                                     <a className="nav-link" href="/signin" style={{color: "#ffffff"}}>SIGN IN</a>

@@ -4,16 +4,51 @@ import '../public/css/main.css';
 import '../public/fonts/font-awesome-4.7.0/css/font-awesome.css';
 import './App.css';
 
-const TxPage = () =>
-  <div>
-       <NavigationComp/>
-       <TxData />
-  </div>
+// const TxPage = () =>
+  {/*<div>*/}
+       {/*<NavigationComp/>*/}
+       {/*<TxData />*/}
+  {/*</div>*/}
 
-class TxData extends Component {
+class TxPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      elements: [],
+      isLoading: false,
+      ins:[],
+      outs:[],
+    };
+  }
+
+  componentDidMount() {
+       this.setState({ isLoading: true });
+       let openVal = this.props.match.params.id;
+
+        fetch("http://192.248.22.171:8080/blocksci/api/v5/tx_with_hash/"+openVal)
+              .then(response => response.json())
+              .then(hits => this.setState({ elements: hits.data}));
+
+        fetch("http://192.248.22.171:8080/blocksci/api/v5/tx_inputs/"+openVal)
+              .then(response => response.json())
+              .then(hits => this.setState({ ins: hits.data }));
+
+        fetch("http://192.248.22.171:8080/blocksci/api/v5/tx_outputs/"+openVal)
+              .then(response => response.json())
+              .then(hits => this.setState({ outs: hits.data, isLoading: false }));
+  }
 
   render() {
+    const { elements, ins, outs, isLoading } = this.state;
+
+    if (isLoading) {
+      return <p style={{textAlign:"center", marginTop:"80px"}}>Loading ...</p>;
+    }
+
     return (
+      <div>
+        <NavigationComp/>
       <div className="container">
         <div className="row" style={{marginTop:"40px"}}>
             <div className="col-md-12">
@@ -30,12 +65,16 @@ class TxData extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1CK6KHY6MHgYvmRQ4PAafKYDrg1ejbH1cE </td>
-                        </tr>
-                        <tr>
-                            <td>1CK6KHY6MHgYvmRQ4PAafKYDrg1ejbH1cE </td>
-                        </tr>
+                        {ins.length > 0
+                            ? ins.map(hit =>
+                                <tr>
+                                    <td>{hit.address.split("(")[1].slice(0, -1)} </td>
+                                </tr>
+                            ):
+                            <tr>
+                                <td>No any inputs</td>
+                            </tr>
+                        }
                         </tbody>
                     </table>
                 </div>
@@ -55,22 +94,18 @@ class TxData extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1CK6KHY6MHgYvmRQ4PAafKYDrg1ejbH1cE </td>
-                            <td>23.34 BTC</td>
-                        </tr>
-                        <tr>
-                            <td>1CK6KHY6MHgYvmRQ4PAafKYDrg1ejbH1cE </td>
-                            <td>23.34 BTC</td>
-                        </tr>
-                        <tr>
-                            <td>1CK6KHY6MHgYvmRQ4PAafKYDrg1ejbH1cE </td>
-                            <td>23.34 BTC</td>
-                        </tr>
-                        <tr>
-                            <td>1CK6KHY6MHgYvmRQ4PAafKYDrg1ejbH1cE </td>
-                            <td>23.34 BTC</td>
-                        </tr>
+                        {outs.length > 0
+                            ? outs.map(hit =>
+                                <tr>
+                                    <td>{hit.address.split("(")[1].slice(0, -1).split(",")[0]} </td>
+                                    <td>{hit.value} BTC</td>
+                                </tr>
+                            ):
+                            <tr>
+                                <td>No any outputs / Decode Error</td>
+                                <td>-</td>
+                            </tr>
+                        }
                         </tbody>
                     </table>
                 </div>
@@ -92,23 +127,23 @@ class TxData extends Component {
                         <tbody>
                         <tr>
                             <td>Hash</td>
-                            <td>a1537589f42c9f9251e3b0d8bfa59a94d2aaf961bbe5163b2b4ea20687fda000</td>
+                            <td><a style={{color:"#2268ad"}}  href={'/explorer/tx/'+this.state.elements.tx_hash}>{this.state.elements.tx_hash}</a></td>
                         </tr>
                         <tr>
                             <td>Size</td>
-                            <td>290 (bytes)</td>
+                            <td>{this.state.elements.size_bytes} (bytes)</td>
                         </tr>
                         <tr>
                             <td>Weight</td>
-                            <td>1052</td>
+                            <td>{this.state.elements.weight}</td>
                         </tr>
                         <tr>
-                            <td>Confirmations</td>
-                            <td>14</td>
+                            <td>Tx Index</td>
+                            <td>{this.state.elements.tx_index}</td>
                         </tr>
                         <tr>
                             <td>Total Amount</td>
-                            <td>234.4 BTC</td>
+                            <td>{this.state.elements.output_value} BTC</td>
                         </tr>
 
                         </tbody>
@@ -121,6 +156,7 @@ class TxData extends Component {
 
             </div>
         </div>
+      </div>
       </div>
     );
   }

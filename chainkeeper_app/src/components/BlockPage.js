@@ -13,53 +13,76 @@ import './App.css';
 //   </div>
 
 class BlockPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      elements: [],
+      isLoading: false,
+      next:0,
+      prev:0,
+      txes:[],
+    };
+  }
+
   componentDidMount() {
-       console.log(this.props.match.params.id);
+       this.setState({ isLoading: true });
+       let openVal = parseInt(this.props.match.params.id);
+
+        fetch("http://192.248.22.171:8080/blocksci/api/v5/block/"+openVal)
+              .then(response => response.json())
+              .then(hits => this.setState({ elements: hits.data, txes:hits.data.tx, next:(openVal+1),prev:(openVal-1), isLoading: false }));
   }
 
   render() {
+    const { elements, txes, prev, next, isLoading } = this.state;
+
+    if (isLoading) {
+      return <p style={{textAlign:"center", marginTop:"80px"}}>Loading ...</p>;
+    }
+
     return (
       <div>
         <NavigationComp/>
       <div className="container">
         <div className="row" style={{marginTop:"40px"}}>
             <div className="col-md-12">
-                <h3>BLOCK #123</h3>
+                <h3>BLOCK #{this.state.elements.height}</h3>
 
                 <div className="row">
                     <div className="col-md-5">
-                        <table id="blockSummary" className="table table-striped" style={{marginTop:"20px"}}>
-                        <thead>
-                        <tr>
-                            <th scope="col">Summary</th>
-                            <th scope="col"/>
+                            <table id="blockSummary" className="table table-striped" style={{marginTop:"20px"}}>
+                                <thead>
+                                <tr>
+                                    <th scope="col">Summary</th>
+                                    <th scope="col"/>
 
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Number Of Transactions</td>
-                            <td>2323</td>
-                        </tr>
-                        <tr>
-                            <td>Output Total</td>
-                            <td>2,577.40401907 BTC</td>
-                        </tr>
-                        <tr>
-                            <td>Transaction Fees</td>
-                            <td>0.06544274 BTC</td>
-                        </tr>
-                        <tr>
-                            <td>Timestamp</td>
-                            <td>2018-08-09 10:55:19</td>
-                        </tr>
-                        <tr>
-                            <td>Nonce</td>
-                            <td>3811265984</td>
-                        </tr>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Number Of Transactions</td>
+                                    <td>{this.state.elements.numTxes}</td>
+                                </tr>
+                                <tr>
+                                    <td>Output Total</td>
+                                    <td>{this.state.elements.output_value} BTC</td>
+                                </tr>
+                                <tr>
+                                    <td>Size</td>
+                                    <td>{this.state.elements.size}</td>
+                                </tr>
+                                <tr>
+                                    <td>Timestamp</td>
+                                    <td>{this.state.elements.timestamp}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nonce</td>
+                                    <td>{this.state.elements.nonce}</td>
+                                </tr>
 
-                        </tbody>
-                    </table>
+                                </tbody>
+                            </table>
                     </div>
 
                     <div className="col-md-7">
@@ -74,19 +97,15 @@ class BlockPage extends Component {
                         <tbody>
                         <tr>
                             <td>Hash</td>
-                            <td>0000000000000000000bb1fabcfdcaa46c3d1163e2550f2397506b190187de60</td>
+                            <td><a style={{color:"#2268ad"}}  href={'/explorer/block/'+this.state.elements.height}>{this.state.elements.block_hash}</a></td>
                         </tr>
                         <tr>
                             <td>Previous Block</td>
-                            <td>000000000000000000172230089aed596ecf30eef1f1109b007c6c0d9dd746b7</td>
+                            <td><a style={{color:"#2268ad"}}  href={'/explorer/block/'+this.state.prev}>{this.state.elements.prev_block}</a></td>
                         </tr>
                         <tr>
                             <td>Next Block(s)</td>
-                            <td>00000000000000000010cb12be8e360d03867eaf1675f9ad8a1e8d9e280be0e1</td>
-                        </tr>
-                        <tr>
-                            <td>Merkle Root</td>
-                            <td>ebcfe2d23d22696052c797f6fc0dc06c32d3cfb52f817a473a5d97810066c105</td>
+                            <td><a style={{color:"#2268ad"}}  href={'/explorer/block/'+this.state.next}>{this.state.elements.next_block}</a></td>
                         </tr>
                         </tbody>
                     </table>
@@ -108,38 +127,20 @@ class BlockPage extends Component {
                             <th scope="col">Inputs</th>
                             <th scope="col">Outputs</th>
                             <th scope="col">Amount</th>
-                            <th scope="col">Timestamp</th>
+                            <th scope="col">Size (bytes)</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>77f1c71f5ab2085fd7be0c78433563ad73cd3ce8a539d824acfca4bced41bb35</td>
-                            <td>23</td>
-                            <td>4</td>
-                            <td>23.445 BTC</td>
-                            <td>2018-08-09 10:53:28</td>
+
+                        {txes.map(hit =>
+                        <tr key={hit.block_height}>
+                            <td><a style={{color:"#2268ad"}}  href={'/explorer/tx/'+hit.tx_hash}>{hit.tx_hash}</a></td>
+                            <td>{hit.numIns}</td>
+                            <td>{hit.numOuts}</td>
+                            <td>{hit.output_value} BTC</td>
+                            <td>{hit.size_bytes}</td>
                         </tr>
-                        <tr>
-                            <td>77f1c71f5ab2085fd7be0c78433563ad73cd3ce8a539d824acfca4bced41bb35</td>
-                            <td>23</td>
-                            <td>4</td>
-                            <td>23.445 BTC</td>
-                            <td>2018-08-09 10:53:28</td>
-                        </tr>
-                        <tr>
-                            <td>77f1c71f5ab2085fd7be0c78433563ad73cd3ce8a539d824acfca4bced41bb35</td>
-                            <td>23</td>
-                            <td>4</td>
-                            <td>23.445 BTC</td>
-                            <td>2018-08-09 10:53:28</td>
-                        </tr>
-                        <tr>
-                            <td>77f1c71f5ab2085fd7be0c78433563ad73cd3ce8a539d824acfca4bced41bb35</td>
-                            <td>23</td>
-                            <td>4</td>
-                            <td>23.445 BTC</td>
-                            <td>2018-08-09 10:53:28</td>
-                        </tr>
+                        )}
                         </tbody>
                     </table>
                 </div>

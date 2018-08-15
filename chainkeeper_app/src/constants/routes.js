@@ -9,3 +9,4 @@ export const EXPLORER_TX_HASH = '/explorer/tx/:id';
 export const EXPLORER_ADDRESS = '/explorer/address/:id';
 export const PASSWORD_FORGET = '/pw-forget';
 export const GOOGLE_LOGIN = '/google-login';
+export const API = '/api/blockchain_api';

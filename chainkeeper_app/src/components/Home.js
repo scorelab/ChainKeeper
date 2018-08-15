@@ -23,6 +23,7 @@ class HomePage extends Component {
     fetch("http://192.248.22.171:8080/blocksci/api/v5/latest_blocks")
       .then(response => response.json())
       .then(hits => this.setState({ elements: hits.data, isLoading: false }));
+
   }
 
 
@@ -55,12 +56,12 @@ class HomePage extends Component {
 
                         {elements.map(hit =>
                           <tr key={hit.height}>
-                              <td><a style={{color:"#2268ad"}} href={'/explorer/block_hash/'+ hit.height}>{hit.height}</a></td>
+                              <td><a style={{color:"#2268ad"}} href={'/explorer/block/'+ hit.height}>{hit.height}</a></td>
                             <td>{hit.timestamp}</td>
                             <td>{hit.numTxes}</td>
                             <td>{hit.output_value} BTC</td>
                             <td>{hit.size}</td>
-                            <td><a style={{color:"#2268ad"}} href={'/explorer/block_hash/'+ hit.block_hash}>{hit.block_hash}</a></td>
+                            <td><a style={{color:"#2268ad"}} href={'/explorer/block/'+ hit.height}>{hit.block_hash}</a></td>
                           </tr>
                         )}
                         </tbody>

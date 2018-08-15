@@ -15,18 +15,38 @@ def getBlockData(block_height):
         response["status"] = "failed: Maximum block height is "+str(len(chain.blocks))
         return jsonify(response)
     else:
-        blockData = chain.blocks[block_height]
+        blockDataArray = chain.blocks[block_height]
 
         blockData = {
-            "height": blockData.height,
-            "block_hash": str(blockData.hash),
-            "output_value": (blockData.output_value/100000000),
-            "numTxes": blockData.tx_count,
-            "timestamp": blockData.timestamp,
-            "size": blockData.size_bytes,
-            "nonce": blockData.nonce
+            "height": blockDataArray.height,
+            "block_hash": str(blockDataArray.hash),
+            "prev_block":str(blockDataArray.prev_block.hash),
+            "next_block":str(blockDataArray.next_block.hash),
+            "output_value": (blockDataArray.output_value/100000000),
+            "numTxes": blockDataArray.tx_count,
+            "timestamp": blockDataArray.timestamp,
+            "size": blockDataArray.size_bytes,
+            "nonce": blockDataArray.nonce,
+            "tx":[]
         }
 
+        numTxes = len(blockDataArray.txes)
+        txDataArray = blockDataArray.txes
+        txs = []
+        for x in range(numTxes):
+            txData = {
+                "block_height": txDataArray[x].block_height,
+                "tx_index": txDataArray[x].index,
+                "tx_hash": str(txDataArray[x].hash),
+                "numIns": len(txDataArray[x].inputs),
+                "numOuts": len(txDataArray[x].outputs),
+                "size_bytes": txDataArray[x].size_bytes,
+                "time": str(txDataArray[x].time_seen),
+                "output_value": (txDataArray[x].output_value / 100000000)
+            }
+            txs.append(txData)
+
+        blockData["tx"] = txs
         response["data"] = blockData
         return jsonify(response)
 
