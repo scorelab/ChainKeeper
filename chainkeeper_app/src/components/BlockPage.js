@@ -29,7 +29,7 @@ class BlockPage extends Component {
        this.setState({ isLoading: true });
        let openVal = parseInt(this.props.match.params.id);
 
-        fetch("http://192.248.22.171:8080/blocksci/api/v5/block/"+openVal)
+        fetch("http://127.0.0.1:5000/blocksci/api/v5/block/"+openVal)
               .then(response => response.json())
               .then(hits => this.setState({ elements: hits.data, txes:hits.data.tx, next:(openVal+1),prev:(openVal-1), isLoading: false }));
   }

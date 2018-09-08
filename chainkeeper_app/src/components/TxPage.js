@@ -20,15 +20,15 @@ class TxPage extends Component {
        this.setState({ isLoading: true });
        let openVal = this.props.match.params.id;
 
-        fetch("http://192.248.22.171:8080/blocksci/api/v5/tx_with_hash/"+openVal)
+        fetch("http://127.0.0.1:5000/blocksci/api/v5/tx_with_hash/"+openVal)
               .then(response => response.json())
               .then(hits => this.setState({ elements: hits.data}));
 
-        fetch("http://192.248.22.171:8080/blocksci/api/v5/tx_inputs/"+openVal)
+        fetch("http://127.0.0.1:5000/blocksci/api/v5/tx_inputs/"+openVal)
               .then(response => response.json())
               .then(hits => this.setState({ ins: hits.data }));
 
-        fetch("http://192.248.22.171:8080/blocksci/api/v5/tx_outputs/"+openVal)
+        fetch("http://127.0.0.1:5000/blocksci/api/v5/tx_outputs/"+openVal)
               .then(response => response.json())
               .then(hits => this.setState({ outs: hits.data, isLoading: false }));
   }

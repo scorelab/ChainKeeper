@@ -20,7 +20,7 @@ class HomePage extends Component {
   componentDidMount() {
      this.setState({ isLoading: true });
 
-    fetch("http://192.248.22.171:8080/blocksci/api/v5/latest_blocks")
+    fetch("http://127.0.0.1:5000/blocksci/api/v5/latest_blocks")
       .then(response => response.json())
       .then(hits => this.setState({ elements: hits.data, isLoading: false }));
 
