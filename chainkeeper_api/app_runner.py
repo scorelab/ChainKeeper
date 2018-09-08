@@ -46,10 +46,5 @@ def get_tx_outputs_index(tx_index):
 def get_latest_blocks():
     return getLatestBlocks()
 
-# @app.route('/blocksci/api/v5/spent_tx/', methods=['GET'])
-# def get_latest_blocks():
-#     return getLatestBlocks()
-
-
 if __name__ == '__main__':
    app.run(host='127.0.0.1',port=5000)
