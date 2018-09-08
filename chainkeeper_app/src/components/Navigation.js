@@ -5,10 +5,6 @@ import { withRouter } from 'react-router-dom';
 
 
 class NavigationComp extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     getValueFromUser = (event) => {
         if(event) event.preventDefault();
         let path;

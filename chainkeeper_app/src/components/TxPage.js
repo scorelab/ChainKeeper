@@ -4,12 +4,6 @@ import '../public/css/main.css';
 import '../public/fonts/font-awesome-4.7.0/css/font-awesome.css';
 import './App.css';
 
-// const TxPage = () =>
-  {/*<div>*/}
-       {/*<NavigationComp/>*/}
-       {/*<TxData />*/}
-  {/*</div>*/}
-
 class TxPage extends Component {
   constructor(props) {
     super(props);
