@@ -50,7 +50,7 @@ def get_latest_blocks():
 def get_spent_tx(tx_index,input_index):
     return getSpentTx(tx_index,input_index)
 
-@app.route('/blocksci/api/v5/input_spent_tx/<int:tx_index>/<int:output_index>', methods=['GET'])
+@app.route('/blocksci/api/v5/output_spend_tx/<int:tx_index>/<int:output_index>', methods=['GET'])
 def get_spending_tx(tx_index,output_index):
     return getSpendingTx(tx_index,output_index)
 
