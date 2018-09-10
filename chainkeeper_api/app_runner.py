@@ -46,9 +46,13 @@ def get_tx_outputs_index(tx_index):
 def get_latest_blocks():
     return getLatestBlocks()
 
-# @app.route('/blocksci/api/v5/spent_tx/', methods=['GET'])
-# def get_latest_blocks():
-#     return getLatestBlocks()
+@app.route('/blocksci/api/v5/input_spent_tx/<int:tx_index>/<int:input_index>', methods=['GET'])
+def get_spent_tx(tx_index,input_index):
+    return getSpentTx(tx_index,input_index)
+
+@app.route('/blocksci/api/v5/input_spent_tx/<int:tx_index>/<int:output_index>', methods=['GET'])
+def get_spending_tx(tx_index,output_index):
+    return getSpendingTx(tx_index,output_index)
 
 
 if __name__ == '__main__':
