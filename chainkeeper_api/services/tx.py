@@ -161,7 +161,7 @@ def getSpentTx(tx_index, input_index):
 
         return jsonify(response)
 
-def getSpendingTx(tx_index, input_index):
+def getSpendingTx(tx_index, output_index):
     response = {
         "data": [],
         "status": "success"
@@ -170,7 +170,7 @@ def getSpendingTx(tx_index, input_index):
     try:
         txData = chain.tx_with_index(tx_index)
         tx_outputs = txData.outputs
-        output_selected = tx_outputs[input_index]
+        output_selected = tx_outputs[output_index]
         isSpent = output_selected.is_spent
 
         if isSpent:

@@ -7786,6 +7786,8 @@ let api5 = [{
     ],
     "status": "success"
 }];
+let api6 = [{"data":{"block_height":514474,"numIns":1,"numOuts":4,"output_value":3.34569373,"size_bytes":323,"tx_hash":"31a63da560b857f94d4dab51ccf395f31ffe2f7d3d36b81b67e2421dff236c4b","tx_index":305865288,"weight":1292},"status":"success"}];
+let api7 = [{"data":{"block_height":514493,"numIns":7,"numOuts":2,"output_value":7.04123346,"size_bytes":1110,"tx_hash":"dfdcde260e42dc47231c6c568e2f28b85711975756f0de130dcccac6dc3848f2","tx_index":305882835,"weight":4440},"status":"success"}]
 
 class Documentation extends Component {
 
@@ -7874,6 +7876,26 @@ class Documentation extends Component {
                         <p>Example - <b>http://domain.com/blocksci/api/v5/tx_outputs/1406392</b></p>
                         <p>Result - </p>
                         <ReactJson src={api5} theme="solarized" />
+                    </div>
+                </div>
+                 <div className="row" style={{marginTop:"30px"}}>
+                    <div className="col-md-12">
+                        <h6>Get Input Spent Tx</h6>
+                        <hr/>
+                        <p>End Point - <b>http://domain.com/blocksci/api/v5/input_spent_tx/$tx_index/$output_id</b></p>
+                        <p>Example - <b>http://domain.com/blocksci/api/v5/input_spent_tx/305881673/0</b></p>
+                        <p>Result - </p>
+                        <ReactJson src={api6} theme="solarized" />
+                    </div>
+                </div>
+                 <div className="row" style={{marginTop:"30px"}}>
+                    <div className="col-md-12">
+                        <h6>Get Output Spending Tx</h6>
+                        <hr/>
+                        <p>End Point - <b>http://domain.com/blocksci/api/v5/output_spend_tx/$tx_index/$output_id</b></p>
+                        <p>Example - <b>http://domain.com/blocksci/api/v5/output_spend_tx/305881672/0</b></p>
+                        <p>Result - </p>
+                        <ReactJson src={api7} theme="solarized" />
                     </div>
                 </div>
             </div>
