@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import NavigationComp from './Navigation';
-import { withRouter } from 'react-router-dom';
 
 import '../public/css/main.css';
 import '../public/fonts/font-awesome-4.7.0/css/font-awesome.css';
 import './App.css';
 
-// const BlockPage = () =>
-//   <div>
-//        <NavigationComp/>
-//        <BlockData />
-//   </div>
 
 class BlockPage extends Component {
   constructor(props) {
@@ -32,10 +26,10 @@ class BlockPage extends Component {
         fetch("http://192.248.22.171:8080/blocksci/api/v5/block/"+openVal)
               .then(response => response.json())
               .then(hits => this.setState({ elements: hits.data, txes:hits.data.tx, next:(openVal+1),prev:(openVal-1), isLoading: false }));
-  }
+  };
 
   render() {
-    const { elements, txes, prev, next, isLoading } = this.state;
+    const { txes, isLoading } = this.state;
 
     if (isLoading) {
       return <p style={{textAlign:"center", marginTop:"80px"}}>Loading ...</p>;

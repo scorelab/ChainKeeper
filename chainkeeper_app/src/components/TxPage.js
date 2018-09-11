@@ -4,12 +4,6 @@ import '../public/css/main.css';
 import '../public/fonts/font-awesome-4.7.0/css/font-awesome.css';
 import './App.css';
 
-// const TxPage = () =>
-  {/*<div>*/}
-       {/*<NavigationComp/>*/}
-       {/*<TxData />*/}
-  {/*</div>*/}
-
 class TxPage extends Component {
   constructor(props) {
     super(props);
@@ -26,9 +20,15 @@ class TxPage extends Component {
        this.setState({ isLoading: true });
        let openVal = this.props.match.params.id;
 
-        fetch("http://192.248.22.171:8080/blocksci/api/v5/tx_with_hash/"+openVal)
+        if(isNaN(openVal)){
+            fetch("http://192.248.22.171:8080/blocksci/api/v5/tx_with_hash/"+openVal)
               .then(response => response.json())
               .then(hits => this.setState({ elements: hits.data}));
+        }else{
+           fetch("http://192.248.22.171:8080/blocksci/api/v5/tx_with_index/"+openVal)
+              .then(response => response.json())
+              .then(hits => this.setState({ elements: hits.data}));
+        }
 
         fetch("http://192.248.22.171:8080/blocksci/api/v5/tx_inputs/"+openVal)
               .then(response => response.json())
@@ -39,8 +39,12 @@ class TxPage extends Component {
               .then(hits => this.setState({ outs: hits.data, isLoading: false }));
   }
 
+  clickOutputCheckSpent(input_index){
+    alert(input_index)
+  }
+
   render() {
-    const { elements, ins, outs, isLoading } = this.state;
+    const { ins, outs, isLoading } = this.state;
 
     if (isLoading) {
       return <p style={{textAlign:"center", marginTop:"80px"}}>Loading ...</p>;
@@ -68,7 +72,7 @@ class TxPage extends Component {
                         {ins.length > 0
                             ? ins.map(hit =>
                                 <tr>
-                                    <td>{hit.address.split("(")[1].slice(0, -1)} </td>
+                                    <td><a style={{color:"#2268ad"}}  href={'/explorer/tx/'+hit.spent_tx_index}>{hit.address.split("(")[1].slice(0, -1)} </a></td>
                                 </tr>
                             ):
                             <tr>
@@ -97,7 +101,10 @@ class TxPage extends Component {
                         {outs.length > 0
                             ? outs.map(hit =>
                                 <tr>
-                                    <td>{hit.address.split("(")[1].slice(0, -1).split(",")[0]} </td>
+                                    {hit.spending_tx_index == null
+                                        ?<td data-toggle="tooltip" data-placement="right" title="Output is not spend yet">{hit.address.split("(")[1].slice(0, -1).split(",")[0]} </td>
+                                        :<td><a style={{color:"#2268ad"}}  href={'/explorer/tx/'+hit.spending_tx_index}>{hit.address.split("(")[1].slice(0, -1).split(",")[0]}</a></td>
+                                    }
                                     <td>{hit.value} BTC</td>
                                 </tr>
                             ):
