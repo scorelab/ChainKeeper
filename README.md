@@ -2,15 +2,15 @@
 
 ![](https://cdn-images-1.medium.com/max/1400/1*ci0YcdpKa5AoefHyFpae2w.jpeg)
 
-ChainKeeper is a web application to explore and analyze block-chain data for users. It is a web-based application for blockchain developers who are looking to interact with BlockSci to analyse the blockchain data in blockchains. And also ChainKeeper contains separate REST API for getting blockchain data easily. 
+ChainKeeper is a web application to explore and analyze block-chain data for users. It is a web-based application for blockchain developers who are looking to interact with [BlockSci](https://citp.github.io/BlockSci/readme.html#documentation) to analyse the blockchain data in blockchains. And also ChainKeeper contains separate REST API for getting blockchain data easily. 
 
 [![N|Solid](https://cdn-images-1.medium.com/max/1500/1*ytMIcp6uu6UIZpApG1LFYg.png)]()
 
 ### Implementation Details
 
-  - Front-End is developed using ReactJs
-  - Back-end is handled by NodeJS and Python
-  - Firebase is used for user authentication
+  - Front-End is developed using [ReactJs](https://reactjs.org/)
+  - Back-end is handled by [NodeJS](https://nodejs.org/en/) and [Python](https://www.python.org/)
+  - [Firebase](https://firebase.google.com/) is used for user authentication
   - Firebase is used as the databases for storing data
   - REST API is python flask
 
