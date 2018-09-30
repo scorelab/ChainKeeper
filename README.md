@@ -30,6 +30,7 @@ ChainKeeper is a web application to explore and analyze block-chain data for use
 
 ```sh
 $ cd ChainKeeper
+$ cd chainkeeper_app
 $ npm install 
 $ npm start
 ```
