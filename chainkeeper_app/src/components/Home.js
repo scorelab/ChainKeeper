@@ -62,6 +62,7 @@ class HomePage extends Component {
                             <td>{hit.output_value} BTC</td>
                             <td>{hit.size}</td>
                             <td><a style={{color:"#2268ad"}} href={'/explorer/block/'+ hit.height}>{hit.block_hash}</a></td>
+			    <button className="btn btn-outline-success my-2 my-sm-0" type="button" ><a href={'/explorer/block/'+ hit.height}>View Details</a></button>
                           </tr>
                         )}
                         </tbody>
