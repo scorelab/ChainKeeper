@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import NavigationComp from './Navigation';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const MainPage = () =>
   <div>
@@ -61,7 +63,8 @@ class HomePage extends Component {
                             <td>{hit.numTxes}</td>
                             <td>{hit.output_value} BTC</td>
                             <td>{hit.size}</td>
-                            <td><a style={{color:"#2268ad"}} href={'/explorer/block/'+ hit.height}>{hit.block_hash}</a></td>
+                            <td><p style={{color:"#2268ad"}}>{hit.block_hash}</p></td>
+                            <td><Link to={'/explorer/block/'+ hit.height}><Button bsStyle="info" onClick="">Details</Button></Link></td>
                           </tr>
                         )}
                         </tbody>
