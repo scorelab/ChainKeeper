@@ -28,6 +28,8 @@ ChainKeeper is a web application to explore and analyze block-chain data for use
 
 ### Installation
 
+Can be used only in Mac OS and Ubuntu because BlockSci is not supported in Windows
+
 ```sh
 $ cd ChainKeeper
 $ npm install 
