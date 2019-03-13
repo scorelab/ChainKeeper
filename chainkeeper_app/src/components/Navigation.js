@@ -75,7 +75,7 @@ class NavigationComp extends Component {
                             <li className="nav-item dropdown">
                                 <AuthUserContext.Consumer>
                                     {authUser =>
-                                        <a style={{color: "#ffffff"}} className="nav-link dropdown-toggle" href="#"
+                                        <a style={{color: "#ffffff"}} className="nav-link dropdown-toggle" href={null}
                                            id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                                            aria-expanded="false">
                                             <i className="fa fa-user" aria-hidden="true"/> {authUser.email}
