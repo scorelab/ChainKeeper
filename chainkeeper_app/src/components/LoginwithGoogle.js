@@ -45,7 +45,7 @@ class LoginwithGoogle extends Component {
         };
         return (
            <div>
-              <img className="google_login" src={require('../public/images/gmail_login.png')} style={{width:"200px"}} onClick={() => imageClick()} />
+              <img className="google_login" alt = "google login "src={require('../public/images/gmail_login.png')} style={{width:"200px"}} onClick={() => imageClick()} />
            </div>
         );
      }
