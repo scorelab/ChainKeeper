@@ -2,6 +2,7 @@
 #define ANALYSIS_LIBRARY_BLOCKCHAIN_PY_H
 
 #include "Tx_py.h"
+#include "../addresses/Address_py.h"
 
 class Blockchain {
 

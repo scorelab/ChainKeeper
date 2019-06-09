@@ -1,6 +1,8 @@
 #ifndef ANALYSIS_LIBRARY_INPUT_PY_H
 #define ANALYSIS_LIBRARY_INPUT_PY_H
 
+#include "../addresses/Address_py.h"
+
 class Input {
 
 public:

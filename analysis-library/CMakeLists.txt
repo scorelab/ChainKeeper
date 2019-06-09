@@ -24,7 +24,15 @@ link_directories(${Boost_LIBRARY_DIR})
 set(LIBRARIES)
 
 # Build and link the chainkeeper_analysis module
-add_library(chainkeeper_analysis SHARED python_module.cpp classes/blockchain/Blockchain_py.h classes/Globals_py.h classes/blockchain/Tx_py.h classes/blockchain/Block_py.h classes/blockchain/Input_py.h)
+add_library(chainkeeper_analysis SHARED
+        python_module.cpp
+        classes/blockchain/Blockchain_py.h
+        classes/Globals_py.h
+        classes/blockchain/Tx_py.h
+        classes/blockchain/Block_py.h
+        classes/blockchain/Input_py.h
+        classes/addresses/Address_py.h
+        classes/addresses/Address_py.h)
 target_link_libraries(chainkeeper_analysis ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${LIBRARIES})
 add_dependencies(chainkeeper_analysis Boost)
 
