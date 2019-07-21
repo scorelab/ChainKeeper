@@ -35,4 +35,7 @@ target_link_libraries( chain_parser Boost::serialization Boost::iostreams Boost:
 target_link_libraries( chain_parser secp256k1)
 target_link_libraries( chain_parser sparsehash)
 
+add_library(chain_parser SHARED
+        db_connections/rocks_db.h)
+
 install(TARGETS chain_parser DESTINATION bin)
