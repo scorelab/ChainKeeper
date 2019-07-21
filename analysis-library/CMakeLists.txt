@@ -32,7 +32,7 @@ add_library(chainkeeper_analysis SHARED
         classes/blockchain/Block_py.h
         classes/blockchain/Input_py.h
         classes/addresses/Address_py.h
-        classes/addresses/Address_py.h rocks_db/connection.h)
+        classes/addresses/Address_py.h rocks_db/connection.h memory-mapper/mmap.hpp memory-mapper/page.h memory-mapper/shared_mmap.h memory-mapper/string_util.h)
 target_link_libraries(chainkeeper_analysis ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${LIBRARIES})
 add_dependencies(chainkeeper_analysis Boost)
 
