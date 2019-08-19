@@ -24,4 +24,4 @@ add_executable(analysis_library
         memory-mapper/string_util.h
         rocks_db/connection.h
         sqlite_db/sqlitecon.hpp
-        python_module.cpp)
+        python_module.cpp sqlite_db/Block_db.h)
