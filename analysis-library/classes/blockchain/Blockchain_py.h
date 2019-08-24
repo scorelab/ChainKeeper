@@ -21,17 +21,13 @@ public:
 
     boost::python::list block_range(int startBlock, int endBlock);
 
+    int block_count();
+
     int tx_count();
 
-    Tx transaction_with_hash(std::string hash);
+    Tx tx_with_hash(std::string hash);
 
-    Tx transaction_with_index(int index);
-
-    boost::python::list filter_tx(std::string query);
-
-    boost::python::list all_outputs(int startBlock, int endBlock);
-
-    boost::python::list all_inputs(int startBlock, int endBlock);
+    Tx tx_with_index(int index);
 };
 
 #endif //ANALYSIS_LIBRARY_BLOCKCHAIN_PY_H
