@@ -1,6 +1,9 @@
 #ifndef ANALYSIS_LIBRARY_BLOCK_PY_H
 #define ANALYSIS_LIBRARY_BLOCK_PY_H
 
+#include <string>
+#include <boost/python/list.hpp>
+
 class Block {
 
 public:
@@ -8,7 +11,7 @@ public:
     //attributes
     int height;
     std::string hash;
-    int timestamp;
+    std::string timestamp;
     int size;
     int tx_count;
     int block_index;
@@ -28,7 +31,7 @@ public:
     Block(std::string hash);
 
     //constructor for Block from map data
-    Block(std::map<string,string> blockData);
+    Block(std::map<std::string,std::string> blockData);
 
     // Methods
     std::string str();
@@ -39,7 +42,7 @@ public:
 
     boost::python::list coinbase_tx();
 
-    long int fee();
+    long double fee();
 
     boost::python::list txes();
 
