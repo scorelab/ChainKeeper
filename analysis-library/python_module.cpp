@@ -78,6 +78,5 @@ BOOST_PYTHON_MODULE(chainkeeper_analysis) {
             .def(init<string>())
             .def_readonly("block_index", &Input::block_index)
             .def_readonly("tx_index", &Input::tx_index)
-            .def("__str__", &Input::str)
-
+            .def("__str__", &Input::str);
 }
