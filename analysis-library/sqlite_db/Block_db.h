@@ -134,6 +134,74 @@ namespace Block {
             return txCoinbaseHashList;
         }
 
+        std::vector <std::map<string,string>> getCoinbaseTxFromIndex(boost::python::list tx_ids){
+            std::vector <std::map<string,string>> txCoinbaseHashList;
+            int idLength = boost::python::len(tx_ids);
+            string temp = "";
+            for(int x=0; x< idLength; x++){
+                int id = boost::python::extract<int>(tx_ids[x]);
+                temp += to_string(id);
+                if(x != idLength-1){
+                    temp +=",";
+                }
+            }
+            std::string q1 = "select * from TX_DATA WHERE DATA_ID IN (";
+            std::string q2 = ") AND COIN_BASE=1;";
+            std::string query = q1+temp+q2;
+            char const *sqlQuery = query.c_str();
+
+            sqlite3_prepare_v2(db, sqlQuery, -1, &stmt, NULL);
+
+            while (sqlite3_step(stmt) != SQLITE_DONE) {
+                std::map<string, string> coinbase_txes;
+
+                int num_cols = sqlite3_column_count(stmt);
+                for (int i = 0; i < num_cols; i++)
+                {
+                    coinbase_txes.insert(pair<string, string>(std::string(reinterpret_cast<const char*>(sqlite3_column_name(stmt, i))), std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, i)))));
+                }
+
+                txCoinbaseHashList.push_back(coinbase_txes);
+            }
+
+            sqlite3_finalize(stmt);
+            sqlite3_close(db);
+
+            return txCoinbaseHashList;
+        }
+
+        long double getFeeOfBlock(boost::python::list tx_ids){
+            long double txTotalFeeAmount = 0;
+            int idLength = boost::python::len(tx_ids);
+            string temp = "";
+            for(int x=0; x< idLength; x++){
+                int id = boost::python::extract<int>(tx_ids[x]);
+                temp += to_string(id);
+                if(x != idLength-1){
+                    temp +=",";
+                }
+            }
+            std::string q1 = "select TX_FEE from TX_DATA WHERE DATA_ID IN (";
+            std::string q2 = ") ;";
+            std::string query = q1+temp+q2;
+            char const *sqlQuery = query.c_str();
+
+            sqlite3_prepare_v2(db, sqlQuery, -1, &stmt, NULL);
+
+            while (sqlite3_step(stmt) != SQLITE_DONE) {
+                int num_cols = sqlite3_column_count(stmt);
+                for (int i = 0; i < num_cols; i++) {
+                    string amount = std::string(reinterpret_cast<const char*>(sqlite3_column_text(stmt, i)));
+                    long double curAmount = stod(amount);
+                    txTotalFeeAmount += curAmount;
+                }
+            }
+
+            sqlite3_finalize(stmt);
+            sqlite3_close(db);
+
+            return txTotalFeeAmount;
+        }
     };
 }
 
