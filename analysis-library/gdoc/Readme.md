@@ -42,10 +42,10 @@ make install
 ### Compile and Python-Interface
 ```
 # download the source code
-https://github.com/scorelab/Monerosci
+https://github.com/scorelab/ChainKeeper
 
 # enter the downloaded sourced code folder
-cd Monerosci/python-interface
+cd ChainKeeper/analysis-library
 
 # make a build folder and enter it
 mkdir build && cd build
@@ -54,7 +54,7 @@ mkdir build && cd build
 cmake ..
 
 # compile
-make monerosci
+make chainkeeper_analysis
 ```
 
 When compilation finishes python shared library ```chainkeeper_analysis.so``` file should be created. in /build/out directory
