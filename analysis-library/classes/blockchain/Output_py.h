@@ -1,6 +1,11 @@
 #ifndef ANALYSIS_LIBRARY_OUTPUT_PY_H
 #define ANALYSIS_LIBRARY_OUTPUT_PY_H
 
+#include <boost/python/list.hpp>
+#include "../addresses/Address_py.h"
+#include "Block_py.h"
+#include "Tx_py.h"
+
 class Output {
 
 public:
@@ -10,7 +15,7 @@ public:
     int tx_index;
     double amount;
 
-    Input(int index);
+    Output(std::map <string, string> outputData);
 
     // Methods
     std::string str();
