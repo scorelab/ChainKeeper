@@ -1,9 +1,14 @@
 #ifndef ANALYSIS_LIBRARY_TX_PY_H
 #define ANALYSIS_LIBRARY_TX_PY_H
 
+#include <boost/python/list.hpp>
+using namespace std;
+
 class Tx {
 
-    //Attributes
+    Tx(std::map<std::string, std::string> txData);
+
+//Attributes
     bool is_coinbase;
     int block_height;
     std::string hash;
@@ -18,6 +23,14 @@ class Tx {
     double size;
     int tx_index;
 
+    // Methods
+    std::string str();
+
+    boost::python::list outputs();
+
+    boost::python::list inputs();
+
+public:
     // Constructor
     Tx();
 
@@ -27,12 +40,7 @@ class Tx {
     //constructor for get Tx from hash
     Tx(std::string hash);
 
-    // Methods
-    std::string str();
-
-    boost::python::list outputs();
-
-    boost::python::list inputs();
+    Block blockObj();
 };
 
 #endif //ANALYSIS_LIBRARY_TX_PY_H
