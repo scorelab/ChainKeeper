@@ -27,6 +27,9 @@ public:
     //constructor for Block from hash
     Block(std::string hash);
 
+    //constructor for Block from map data
+    Block(std::map<string,string> blockData);
+
     // Methods
     std::string str();
 

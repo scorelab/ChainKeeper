@@ -3,9 +3,9 @@
 
 #include <iostream>
 #include <stdio.h>
-#include <sqlitecon.hpp>
+#include "sqlitecon.hpp"
 
-namespace Block {
+namespace BlockData {
     template <class K, class V>
     boost::python::dict toPythonDict(std::map<K, V> map) {
         typename std::map<K, V>::iterator iter;
@@ -16,13 +16,13 @@ namespace Block {
         return dictionary;
     }
 
-    class Block: public sqlite_db::conenction {
+    class BlockData: public sqlite_db::conenction {
         sqlite3 *db;
         sqlite3_stmt *stmt;
 
     public:
 
-        Block(string homeDirPath, string subDir, string storeDir) :
+        BlockData(string homeDirPath, string subDir, string storeDir) :
                 sqlite_db::conenction(homeDirPath, subDir, storeDir) {}
 
         map<string, string> getBlockDetails(int height) {
