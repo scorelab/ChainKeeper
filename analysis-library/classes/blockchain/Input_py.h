@@ -1,7 +1,14 @@
 #ifndef ANALYSIS_LIBRARY_INPUT_PY_H
 #define ANALYSIS_LIBRARY_INPUT_PY_H
 
+#include <map>
 #include "../addresses/Address_py.h"
+
+using namespace std;
+class Block;
+class Tx;
+
+using namespace std;
 
 class Input {
 
@@ -11,18 +18,12 @@ public:
     double amount;
     int age;
 
-    Input(int index);
+    Input(std::__1::map<string, string> inputData);
 
     // Methods
     std::string str();
 
     Address address();
-
-    Block block();
-
-    Tx tx();
-
-    boost::python::list spent_tx();
 };
 
 
