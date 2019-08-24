@@ -8,7 +8,8 @@ class Tx {
 
     Tx(std::map<std::string, std::string> txData);
 
-//Attributes
+public:
+    //Attributes
     bool is_coinbase;
     int block_height;
     std::string hash;
@@ -29,8 +30,6 @@ class Tx {
     boost::python::list outputs();
 
     boost::python::list inputs();
-
-public:
     // Constructor
     Tx();
 
