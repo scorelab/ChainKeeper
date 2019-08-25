@@ -1,5 +1,5 @@
-#ifndef XMREG01_CMDLINEOPTIONS_H
-#define XMREG01_CMDLINEOPTIONS_H
+#ifndef CMDLINEOPTIONS_H
+#define CMDLINEOPTIONS_H
 
 #include <iostream>
 #include <string>
@@ -7,7 +7,7 @@
 #include <boost/program_options.hpp>
 #include <boost/optional.hpp>
 
-namespace xmreg
+namespace core
 {
 
     using namespace std;
@@ -25,4 +25,4 @@ namespace xmreg
 }
 
 
-#endif //XMREG01_CMDLINEOPTIONS_H
+#endif //CMDLINEOPTIONS_H

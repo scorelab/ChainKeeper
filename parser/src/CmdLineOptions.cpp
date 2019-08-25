@@ -1,7 +1,7 @@
 #include "CmdLineOptions.h"
 
 
-namespace xmreg
+namespace core
 {
     CmdLineOptions::CmdLineOptions(int acc, const char *avv[]) {
 
