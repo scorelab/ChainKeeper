@@ -1,12 +1,12 @@
-#ifndef XMREG01_CHAINCORE_H
-#define XMREG01_CHAINCORE_H
+#ifndef CHAINCORE_H
+#define CHAINCORE_H
 
 #include <iostream>
 
 #include "chain_headers.h"
 #include "tools.h"
 
-namespace xmreg
+namespace core
 {
     using namespace cryptonote;
     using namespace crypto;
@@ -78,4 +78,4 @@ namespace xmreg
 
 
 
-#endif //XMREG01_CHAINCORE_H
+#endif //CHAINCORE_H
