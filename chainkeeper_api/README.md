@@ -2,6 +2,10 @@
 
 API calls are available with CORS headers. More APIs will be added in soon. 
 
+##### Install Requirements
+
+  - pip install -r requirements.txt
+
 ##### Single Block Data
 
   - End Point - <b>http://domain.com/blocksci/api/v5/block/$block_height</b>
